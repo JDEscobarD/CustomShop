@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContenidoCambiante;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StoreController;
+use App\Http\Controllers\CheckOutController;
 
 
 //Rutas CMS CustomShop
@@ -27,3 +28,5 @@ Route::middleware(['auth'])->group(function(){
 Route::get('/tienda-online', [StoreController::class, 'indexWeb'])->name('storeweb');
 Route::get('/tienda-online/categorias', [StoreController::class, 'webCategories'])->name('categoriesweb');
 Route::get('/tienda-online/prodcutos', [StoreController::class, 'webProducts'])->name('productsweb');
+//
+Route::get('/tienda-online/checkout', [CheckOutController::class, 'webCheckout'])->name('checkout');

@@ -39,7 +39,7 @@
             </div>
             <div class="col-lg-2 mb-3">
                 <label for="orderFilter" class="form-label">Ordenar por:</label>
-                <select class="form-select" name="orderFilter" aria-label="Default select example">
+                <select class="form-select" id="orderFilter">
                     <option selected disabled value="1">Seleccione</option>
                     <option value="2">A-Z</option>
                     <option value="3">Z-A</option>
@@ -48,13 +48,16 @@
                 </select>
             </div>
             <div class="col-lg-2 mb-3">
-                <button type="submit" class="btn btn-outline-primary px-5 w-100">Aplicar</button>
+                <button type="submit" id="applyFilter" class="btn btn-outline-primary px-5 w-100">Aplicar</button>
+            </div>
+            <div class="col-lg-2 mb-3">
+                <button type="button" id="resetFilter" class="btn btn-link red">Borrar filtros</button>
             </div>
         </div>
     </div>
     <form action="#" method="GET">
         <div class="table-responsive mt-4">
-            <table class="table table-striped">
+            <table class="table table-striped" id="productTable">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
@@ -68,7 +71,7 @@
                 <tbody class="table-group-divider">
                     <tr>
                         <th scope="row"><strong>9857</strong></th>
-                        <td>Performance bike - Giant</td>
+                        <td class="name-item">Velocity Edge - Scott</td>
                         <td>11/08/2024</td>
                         <td>
                             <select class="form-select" aria-label="Default select example">
@@ -79,11 +82,11 @@
                             </select>
                         </td>
                         <td>Natalia Rincón, Calle 66 sur # 44 a 05 ciudad Bogotá...</td>
-                        <td>$8.985.699</td>
+                        <td class="price-item">$ 3.774.544</td>
                     </tr>
                     <tr>
                         <th scope="row"><strong>9854</strong></th>
-                        <td>Performance bike - Giant</td>
+                        <td class="name-item">Adventure Pro - Kona</td>
                         <td>10/08/2024</td>
                         <td>
                             <select class="form-select" aria-label="Default select example">
@@ -94,11 +97,11 @@
                             </select>
                         </td>
                         <td>Natalia Rincón, Calle 66 sur # 44 a 05 ciudad Bogotá...</td>
-                        <td>$8.985.699</td>
+                        <td class="price-item">$ 1.474.544</td>
                     </tr>
                     <tr>
                         <th scope="row"><strong>8757</strong></th>
-                        <td>Performance bike - Giant</td>
+                        <td class="name-item">Peak Striker - Santa Cruz</td>
                         <td>14/08/2024</td>
                         <td>
                             <select class="form-select" aria-label="Default select example">
@@ -109,11 +112,11 @@
                             </select>
                         </td>
                         <td>Natalia Rincón, Calle 66 sur # 44 a 05 ciudad Bogotá...</td>
-                        <td>$8.985.699</td>
+                        <td class="price-item">$ 6.321.544</td>
                     </tr>
                     <tr>
                         <th scope="row"><strong>8952</strong></th>
-                        <td>Performance bike - Giant</td>
+                        <td class="name-item">Road Warrior - Orbea</td>
                         <td>12/06/2024</td>
                         <td>
                             <select class="form-select" aria-label="Default select example">
@@ -124,11 +127,11 @@
                             </select>
                         </td>
                         <td>Natalia Rincón, Calle 66 sur # 44 a 05 ciudad Bogotá...</td>
-                        <td>$8.985.699</td>
+                        <td class="price-item">$ 6.494.544</td>
                     </tr>
                     <tr>
                         <th scope="row"><strong>8597</strong></th>
-                        <td>Performance bike - Giant</td>
+                        <td class="name-item">All-Terrain Beast - Merida</td>
                         <td>31/04/2024</td>
                         <td>
                             <select class="form-select" aria-label="Default select example">
@@ -139,11 +142,11 @@
                             </select>
                         </td>
                         <td>Natalia Rincón, Calle 66 sur # 44 a 05 ciudad Bogotá...</td>
-                        <td>$8.985.699</td>
+                        <td class="price-item">$ 9.474.544</td>
                     </tr>
                     <tr>
                         <th scope="row"><strong>4781</strong></th>
-                        <td>Performance bike - Giant</td>
+                        <td class="name-item">Summit Racer - Canyon</td>
                         <td>10/11/2024</td>
                         <td>
                             <select class="form-select" aria-label="Default select example">
@@ -154,11 +157,11 @@
                             </select>
                         </td>
                         <td>Natalia Rincón, Calle 66 sur # 44 a 05 ciudad Bogotá...</td>
-                        <td>$8.985.699</td>
+                        <td class="price-item">$ 7.874.544</td>
                     </tr>
                     <tr>
                         <th scope="row"><strong>8552</strong></th>
-                        <td>Performance bike - Giant</td>
+                        <td class="name-item">Urban Sprint - Polygon</td>
                         <td>01/04/2024</td>
                         <td>
                             <select class="form-select" aria-label="Default select example">
@@ -169,11 +172,11 @@
                             </select>
                         </td>
                         <td>Natalia Rincón, Calle 66 sur # 44 a 05 ciudad Bogotá...</td>
-                        <td>$8.985.699</td>
+                        <td class="price-item">$ 3.374.544</td>
                     </tr>
                     <tr>
                         <th scope="row"><strong>8952</strong></th>
-                        <td>Performance bike - Giant</td>
+                        <td class="name-item">Speedster Cycle - Trek</td>
                         <td>12/06/2024</td>
                         <td>
                             <select class="form-select" aria-label="Default select example">
@@ -184,11 +187,11 @@
                             </select>
                         </td>
                         <td>Natalia Rincón, Calle 66 sur # 44 a 05 ciudad Bogotá...</td>
-                        <td>$8.985.699</td>
+                        <td class="price-item">$ 3.474.544</td>
                     </tr>
                     <tr>
                         <th scope="row"><strong>8597</strong></th>
-                        <td>Performance bike - Giant</td>
+                        <td class="name-item">Trail Master - Cannondale</td>
                         <td>31/04/2024</td>
                         <td>
                             <select class="form-select" aria-label="Default select example">
@@ -199,11 +202,11 @@
                             </select>
                         </td>
                         <td>Natalia Rincón, Calle 66 sur # 44 a 05 ciudad Bogotá...</td>
-                        <td>$8.985.699</td>
+                        <td class="price-item">$ 6.574.544</td>
                     </tr>
                     <tr>
                         <th scope="row"><strong>4781</strong></th>
-                        <td>Performance bike - Giant</td>
+                        <td class="name-item">Endurance Rider - Specialized</td>
                         <td>10/11/2024</td>
                         <td>
                             <select class="form-select" aria-label="Default select example">
@@ -214,7 +217,7 @@
                             </select>
                         </td>
                         <td>Natalia Rincón, Calle 66 sur # 44 a 05 ciudad Bogotá...</td>
-                        <td>$8.985.699</td>
+                        <td class="price-item">$ 4.474.544</td>
                     </tr>
                 </tbody>
             </table>
@@ -257,4 +260,6 @@
         </div>
     </div>
 </div>
+
+<script src="{{  asset('js/order-table.js') }}" defer></script>
 @endsection

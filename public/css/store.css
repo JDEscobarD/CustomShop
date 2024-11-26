@@ -89,3 +89,79 @@ body * {
     border-radius: 30px;    
     padding: 10px;
 }
+
+/*Estilos checkout*/
+.checkoutContent h2{
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.checkoutContent h4{
+    margin-bottom: 40px;
+    font-size: 18px;
+    font-weight: 600;
+}
+.checkoutContent h5{
+    color: #191919;
+    font-size: 18px;
+    margin: 25px 0;
+    font-weight: 600;
+}
+.checkoutContent textarea{
+    display: block;
+    width: 100%;
+    border: 1px solid #9a9a9a;
+    border-radius: 20px;
+}
+.checkoutContent .resumePayment{
+    background-color: #f1f1f1;
+    border-radius: 15px;
+    padding: 15px;
+}
+.checkoutContent .resumePayment h4{
+    font-size: 18px;
+    color: #0469FF;
+    font-weight: 600;
+}
+.checkoutContent .resumePayment .btn{
+    border-radius: 45px;
+    padding: 12px;
+}
+.checkoutContent .resumePayment ul{
+    border-radius: 0;
+    font-weight: 600;
+}
+.checkoutContent .resumePayment .list-group-item{
+    background-color: transparent;
+    padding: 10px 0;
+    border: 0;
+}
+.checkoutContent .resumePayment .list-group-item.divider{
+    border-top: 1px solid #191919;
+}
+.checkoutContent .resumePayment .list-group-item .toPay{
+    font-size: 20px;
+    color: #0469FF;
+    font-weight: 600;
+}
+
+
+/*Estilos Inputs*/
+.form-control[type="text"],
+.form-control[type="email"],
+.form-control[type="pass"],
+.form-control[type="tel"],
+.form-select{
+    border-color: #9a9a9a;
+    height: 45px;
+    border-radius: 45px;
+    background-color: #FFF;
+    color: #191919;
+}
+.form-label{
+    font-weight: 600;
+    font-size: 16px;
+}
+.form-label span{
+    color: #FF2D55;
+}

@@ -2,12 +2,12 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="welcome-message">
+    <div class="welcome-message" id="welcome">
         <p>
             <strong>¡Hola! CustomShop Pro</strong>, es una plataforma avanzada de comercio electrónico diseñada para permitir a las tiendas ofrecer productos compuestos que los clientes pueden personalizar según sus preferencias. Este dashboard
             es tu centro de control para gestionar todos los aspectos de tu tienda y asegurar una experiencia de compra excepcional para tus clientes.
         </p>
-        <button type="button">Cerrar</button>
+        <button type="button" id="btnCerrar">Cerrar</button>
     </div>
     <div class="row">
         <div class="col-lg-3">
@@ -36,4 +36,6 @@
         </div>
     </div>
 </div>
+
+<script src="{{ asset('js/cookie.js') }}" defer></script>
 @endsection

@@ -28,6 +28,10 @@ body * {
     flex-direction: row;
 }
 
+.hidden{
+    display: none;
+}
+
 .body-content {
     width: calc(100% - 240px);
     margin-left: 240px;
@@ -107,6 +111,10 @@ textarea.form-control {
     border-bottom: 0;
 }
 
+.table .name-item{
+    color: #0469FF;
+    font-weight: 600;
+}
 /* Paginador */
 
 .pagination .page-item .page-link{

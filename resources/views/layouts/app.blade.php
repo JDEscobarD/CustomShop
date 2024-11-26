@@ -10,6 +10,7 @@
     <title>CustomShop - Dashboard</title>
 
     <script src="{{ asset('js/menuMobile.js') }}" defer></script>
+
 </head>
 
 <body>

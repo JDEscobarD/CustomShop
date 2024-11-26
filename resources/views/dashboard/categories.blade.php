@@ -42,7 +42,7 @@
                     <tr>
                         <th scope="col">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
+                                <input class="form-check-input row-checkbox" type="checkbox" value="" id="selectAll">
                             </div>
                         </th>
                         <th scope="col">Nombre</th>
@@ -56,7 +56,7 @@
                     <tr>
                         <th scope="row">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
+                                <input class="form-check-input row-checkbox" type="checkbox" value="" id="flexCheckIndeterminate">
                             </div>
                         </th>
                         <td>Rines</td>
@@ -70,7 +70,7 @@
                     <tr>
                         <th scope="row">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
+                                <input class="form-check-input row-checkbox" type="checkbox" value="" id="flexCheckIndeterminate">
                             </div>
                         </th>
                         <td>Llantas</td>
@@ -85,7 +85,7 @@
                     <tr>
                         <th scope="row">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
+                                <input class="form-check-input row-checkbox" type="checkbox" value="" id="flexCheckIndeterminate">
                             </div>
                         </th>
                         <td>Marcos</td>
@@ -101,7 +101,7 @@
                     <tr>
                         <th scope="row">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
+                                <input class="form-check-input row-checkbox" type="checkbox" value="" id="flexCheckIndeterminate">
                             </div>
                         </th>
                         <td>Accesorios</td>
@@ -116,7 +116,7 @@
                     <tr>
                         <th scope="row">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
+                                <input class="form-check-input row-checkbox" type="checkbox" value="" id="flexCheckIndeterminate">
                             </div>
                         </th>
                         <td>Transmisiones</td>
@@ -131,7 +131,7 @@
                     <tr>
                         <th scope="row">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
+                                <input class="form-check-input row-checkbox" type="checkbox" value="" id="flexCheckIndeterminate">
                             </div>
                         </th>
                         <td>Ropa</td>
@@ -146,7 +146,7 @@
                     <tr>
                         <th scope="row">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
+                                <input class="form-check-input row-checkbox" type="checkbox" value="" id="flexCheckIndeterminate">
                             </div>
                         </th>
                         <td>Armadas</td>
@@ -199,4 +199,6 @@
         </div>
     </div>
 </div>
+
+<script src="{{  asset('js/checkboxes.js') }}" defer></script>
 @endsection
