@@ -199,6 +199,4 @@
         </div>
     </div>
 </div>
-
-<script src="{{  asset('js/checkboxes.js') }}" defer></script>
 @endsection

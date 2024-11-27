@@ -37,5 +37,4 @@
     </div>
 </div>
 
-<script src="{{ asset('js/cookie.js') }}" defer></script>
 @endsection

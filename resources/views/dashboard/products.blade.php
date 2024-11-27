@@ -293,7 +293,4 @@
         </div>
     </div>
 </div>
-
-<script src="{{  asset('js/order-table.js') }}" defer></script>
-<script src="{{  asset('js/checkboxes.js') }}" defer></script>
 @endsection

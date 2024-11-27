@@ -11,7 +11,7 @@
                 <div class="box-button">
                     <div class="row mx-auto w-100 justify-content-end align-items-center">
                         <div class="col-lg-4 mb-3">
-                            <button type="button" class="btn w-100 btn-link red">Limpiar campos</button>
+                            <button type="button" class="btn w-100 btn-link red" id="clearFields">Limpiar campos</button>
                         </div>
                         <div class="col-lg-4 mb-3">
                             <button type="submit" class="btn w-100 btn-primary">Guardar</button>
@@ -33,5 +33,5 @@
         </div>
     </form>
 </div>
- 
-    @endsection
+
+@endsection

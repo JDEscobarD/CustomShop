@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const radios = document.querySelectorAll('input[type="radio"][name="flexRadioDefault"]');
-    const cancelButton = document.querySelector('.btn-link');
     const saveButton = document.querySelector('.btn-primary');
-
+    
     radios.forEach(radio => {
         radio.addEventListener('change', function () {
             if (this.checked) {
@@ -10,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
-
+    
     function showContent(contentId) {
         //ocultar todos los contenidos
         document.querySelectorAll('.content').forEach(function (content) {
@@ -19,16 +18,5 @@ document.addEventListener('DOMContentLoaded', function () {
         //mostrar el contenido seleccionado
         document.getElementById(contentId).style.display = 'block';
     }
-
-    cancelButton.addEventListener('click', function () {
-        //restablecer todos los campos del formulario
-        document.querySelector('form').reset();
-        //ocultar todas las secciones de contenido
-        document.querySelectorAll('.content').forEach(function (content) {
-            content.style.display = 'none';
-        });
-        alert('Cambios cancelados. El formulario se ha restablecido.');
-    });
-    
 });
 

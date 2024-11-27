@@ -9,7 +9,18 @@
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <title>CustomShop - Dashboard</title>
 
+    <!--script para el menú en móviles-->
     <script src="{{ asset('js/menuMobile.js') }}" defer></script>
+    <!--script para limpiar los campos-->
+    <script src="{{ asset('js/clear-fields.js') }}" defer></script>
+    <!--script para los checkboxes de las tablas-->
+    <script src="{{  asset('js/checkboxes.js') }}" defer></script>
+    <!--script para la cookie del dashboard-->
+    <script src="{{ asset('js/cookie.js') }}" defer></script>
+    <!--script para ordenar las tablas por filtro-->
+    <script src="{{  asset('js/order-table.js') }}" defer></script>
+    <!--script para los medios de pago-->
+    <script src="{{ asset('js/payment.js') }}" defer></script>
 
 </head>
 

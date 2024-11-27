@@ -260,6 +260,4 @@
         </div>
     </div>
 </div>
-
-<script src="{{  asset('js/order-table.js') }}" defer></script>
 @endsection
