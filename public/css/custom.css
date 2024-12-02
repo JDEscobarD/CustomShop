@@ -190,16 +190,6 @@ textarea.form-control {
 .login .userInput,
 .login .passInput {
     padding-left: 40px;
-    background-position: 15px center;
-    background-repeat: no-repeat;
-}
-
-.login .userInput {
-    background-image: url(../media/icons/bx-envelope.svg);
-}
-
-.login .passInput {
-    background-image: url(../media/icons/bx-lock-alt.svg);
 }
 
 .login .btn-section {
@@ -209,6 +199,24 @@ textarea.form-control {
 .login .btn-section .btn-link {
     margin-top: 15px;
     color: #191919;
+}
+.login .ic-login{
+    position: absolute;
+    display: block;
+    width: 15px;
+    height: 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+    left: 15px;
+    top: 15px;
+}
+
+.login .ic-login.user{
+    background-image: url(../media/icons/bx-envelope.svg);
+}
+
+.login .ic-login.pass {
+    background-image: url(../media/icons/bx-lock-alt.svg);
 }
 
 /*****carrusel*****/
@@ -491,6 +499,32 @@ textarea.form-control {
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     z-index: 2;
+}
+
+/*Products*/
+.aditional-settings-prod{
+    background-color: #F1F1F1;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.nav-tabs{
+    border-color: #0469FF;
+}
+
+.nav-tabs .nav-link{
+    color: #525252;
+}
+.nav-tabs .nav-link:hover {
+    border-color: #FFF;
+    border-bottom: 1px solid #0469FF;
+    background-color: #F1F1F1;
+}
+
+.nav-tabs .nav-link.active{
+    background-color: #0469FF;
+    color: #FFF;
+    border-bottom: 1px solid #0469FF;
 }
 
 /* Media Query */

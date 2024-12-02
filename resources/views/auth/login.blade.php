@@ -10,13 +10,17 @@
                 <form action="" method="POST">
                     <div class="mb-3">
                         <label for="userInput" class="form-label">Usuario</label>
-                        <input type="email" class="form-control userInput" id="userInput" placeholder="Correo electrónico">
+                        <div class="position-relative">
+                            <input type="email" class="form-control userInput" id="userInput" placeholder="Correo electrónico">
+                            <span class="ic-login user"></span>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="passInput" class="form-label">Contraseña</label>
                         <div class="position-relative">
                             <input type="password" class="form-control passInput" id="passInput" placeholder="Contraseña">
                             <span class="toggle-text" id="togglePassword">Mostrar</span>
+                            <span class="ic-login pass"></span>
                         </div>
                     </div>
                     <div class="btn-section">
