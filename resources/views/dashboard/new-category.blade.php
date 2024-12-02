@@ -34,4 +34,11 @@
     </form>
 </div>
 
+<!--Llamado de componentes modales para los respectivos mensajes-->
+
+<!--modal limpiar campos-->
+<x-modal id="clearFieldModal" title="¡Advertencia!">
+    <p>Cambios cancelados. <br> El formulario se ha restablecido.</p>
+</x-modal>
+
 @endsection

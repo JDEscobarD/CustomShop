@@ -1,11 +1,20 @@
-const cancelButton = document.querySelector('#clearFields');
+document.addEventListener('DOMContentLoaded', function () {
+    const cancelButton = document.querySelector('#clearFields');
 
-cancelButton.addEventListener('click', function () {
-    //restablecer todos los campos del formulario
-    document.querySelector('form').reset();
-    //ocultar todas las secciones de contenido
-    document.querySelectorAll('.content').forEach(function (content) {
-        content.style.display = 'none';
+    cancelButton.addEventListener('click', function () {
+
+        try {
+            document.querySelector('form').reset();
+            resetImage();
+        } catch (error) {
+            
+        }
+
+        document.querySelectorAll('.content').forEach(function (content) {
+            content.style.display = 'none';
+        });
+
+        const modal = new bootstrap.Modal(document.querySelector('#clearFieldModal'));
+        modal.show();
     });
-    alert('Cambios cancelados. El formulario se ha restablecido.');
 });

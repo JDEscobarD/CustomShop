@@ -74,8 +74,10 @@
                         <label for="descripcion" class="form-label">Categoría</label>
                         <select class="form-select" aria-label="Default select example">
                             <option value="1" selected disabled>Seleccione</option>
-                            <option value="2">Categoria 1</option>
-                            <option value="3">Categoria 1</option>
+                            <option value="2">Montaña</option>
+                            <option value="3">Enduro</option>
+                            <option value="4">BMX</option>
+                            <option value="5">Accesorios</option>
                         </select>
                     </div>
                     <div class="mb-3">
@@ -83,8 +85,16 @@
                         <input type="number" class="form-control" id="nombre" name="nombre" placeholder="0">
                     </div>
                     <div class="mb-3">
-                        <label for="formFile" class="form-label">Suba su imagen de portada</label>
-                        <input class="form-control" type="file" id="formFile">
+                        <div class="upload-file">
+                            <div class="front-page">
+                                <label for="formFile" class="form-label">Suba su imagen de portada</label>
+                                <input class="form-control" type="file" id="formFile" accept="image/*">
+                                <div class="thumbnail-product d-none">
+                                    <button type="button" id="deleteImageButton">Eliminar</button>
+                                    <img id="thumbnailPreview" alt="Vista previa" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="nombre" class="form-label d-flex justify-content-between"><span>URL</span> <span>Copiar</span></label>
@@ -96,6 +106,15 @@
     </form>
 </div>
 
+
+
+<!--Llamado de componentes modales para los respectivos mensajes-->
+<x-modal id="clearFieldModal" title="¡Advertencia!">
+    <p>Cambios cancelados. <br> El formulario se ha restablecido.</p>
+</x-modal>
+
+
 <script src="{{ asset('js/tabs-product.js') }}" defer></script>
+<script src="{{ asset('js/thumbnail-product.js') }}" defer></script>
 
 @endsection

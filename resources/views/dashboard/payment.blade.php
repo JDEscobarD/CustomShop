@@ -106,4 +106,9 @@
         </div>
     </form>
 </div>
+
+<!--modal limpiar campos-->
+<x-modal id="clearFieldModal" title="¡Advertencia!">
+    <p>Cambios cancelados. <br> El formulario se ha restablecido.</p>
+</x-modal>
 @endsection
