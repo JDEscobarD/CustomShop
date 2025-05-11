@@ -28,10 +28,9 @@ CustomShopPro utiliza una base de datos estructurada con múltiples tablas y rel
 
 
 ### Desarrollo
-- **Framework**: Laravel 11.
+- **Framework**: Laravel 12.
 - **PHP**: v 8.3
-- **Node JS**: v 20.10
-- **Composer**: v 2.7.8
+- **Composer**: v 2.8.8
 - **Phpmyadmin**: Para gestionar la BD ya sea manualmente o usando SQL.
 - **Blade**: Manejo del front-end.
 - **Javascript**: Javascript vanilla, sin framework, para funciones mínimas como toggle y/o tabs.
@@ -39,7 +38,7 @@ CustomShopPro utiliza una base de datos estructurada con múltiples tablas y rel
 - **CSS**: Estilos en cascada (no sass) para estilizar el CMS.
 
 ### Próximos Pasos
-- **Configurar Productos**: Agregar la funcionalidad de creación de productos.
+- **Productos**: Configurar a detalle y agregar la composición de los productos.
 - **Integración de Métodos de Pago**: Añadir soporte para diversas pasarelas de pago.
 
 CustomShopPro es un proyecto en constante evolución, enfocado en mejorar la experiencia de compra personalizada para los usuarios. 🚀
