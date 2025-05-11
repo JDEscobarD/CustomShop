@@ -123,7 +123,7 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <div class="upload-file"> 
+                        <div class="upload-file">
                             <div class="front-page">
                                 <label for="imagen_portada" class="form-label">Suba su imagen de portada <span class="text-danger">*</span></label>
                                 <input class="form-control @error('imagen_portada') is-invalid @enderror" type="file" id="imagen_portada" name="imagen_portada" accept="image/*" required>
