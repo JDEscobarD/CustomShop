@@ -42,8 +42,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('usuarios/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
     Route::put('usuarios/{id}', [UserController::class, 'update'])->name('users.update');
     Route::delete('usuarios/{id}', [UserController::class, 'destroy'])->name('users.destroy');
-    Route::get('usuarios/papelera', [UserController::class, 'papelera'])->name('users.papelera');
-    Route::post('usuarios/{id}/restore', [UserController::class, 'restore'])->name('users.restore');
+    // Route::get('usuarios/papelera', [UserController::class, 'papelera'])->name('users.papelera');
+    // Route::post('usuarios/{id}/restore', [UserController::class, 'restore'])->name('users.restore');
 });
 
 
