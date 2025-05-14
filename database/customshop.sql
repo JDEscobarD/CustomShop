@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.2
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3306
--- Tiempo de generación: 10-05-2025 a las 15:31:52
--- Versión del servidor: 8.4.3
--- Versión de PHP: 8.3.16
+-- Host: localhost:3306
+-- Generation Time: May 14, 2025 at 01:18 AM
+-- Server version: 8.0.30
+-- PHP Version: 8.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `customshop`
+-- Database: `customshop`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `banks`
+-- Table structure for table `banks`
 --
 
 CREATE TABLE `banks` (
@@ -35,7 +35,7 @@ CREATE TABLE `banks` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `banks`
+-- Dumping data for table `banks`
 --
 
 INSERT INTO `banks` (`id`, `nombre_banco`, `created_at`, `updated_at`) VALUES
@@ -68,7 +68,7 @@ INSERT INTO `banks` (`id`, `nombre_banco`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cache`
+-- Table structure for table `cache`
 --
 
 CREATE TABLE `cache` (
@@ -80,7 +80,7 @@ CREATE TABLE `cache` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cache_locks`
+-- Table structure for table `cache_locks`
 --
 
 CREATE TABLE `cache_locks` (
@@ -92,7 +92,7 @@ CREATE TABLE `cache_locks` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `categories`
+-- Table structure for table `categories`
 --
 
 CREATE TABLE `categories` (
@@ -105,7 +105,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `categories`
+-- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `nombre`, `descripcion`, `created_at`, `updated_at`, `deleted_at`) VALUES
@@ -127,7 +127,7 @@ INSERT INTO `categories` (`id`, `nombre`, `descripcion`, `created_at`, `updated_
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `ciudades`
+-- Table structure for table `ciudades`
 --
 
 CREATE TABLE `ciudades` (
@@ -139,7 +139,7 @@ CREATE TABLE `ciudades` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `ciudades`
+-- Dumping data for table `ciudades`
 --
 
 INSERT INTO `ciudades` (`id`, `nombre`, `departamento_id`, `created_at`, `updated_at`) VALUES
@@ -243,10 +243,10 @@ INSERT INTO `ciudades` (`id`, `nombre`, `departamento_id`, `created_at`, `update
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `composition_options`
+-- Table structure for table `composition_types`
 --
 
-CREATE TABLE `composition_options` (
+CREATE TABLE `composition_types` (
   `id` bigint UNSIGNED NOT NULL,
   `opcion` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -254,30 +254,17 @@ CREATE TABLE `composition_options` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `composition_options`
+-- Dumping data for table `composition_types`
 --
 
-INSERT INTO `composition_options` (`id`, `opcion`, `created_at`, `updated_at`) VALUES
-(1, 'Si', '2025-03-18 15:35:28', '2025-03-18 15:35:28'),
-(2, 'No', '2025-03-18 15:35:28', '2025-03-18 15:35:28');
+INSERT INTO `composition_types` (`id`, `opcion`, `created_at`, `updated_at`) VALUES
+(1, 'Sí', NULL, NULL),
+(2, 'No', NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `composition_types`
---
-
-CREATE TABLE `composition_types` (
-  `id` bigint UNSIGNED NOT NULL,
-  `opcion` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `departamentos`
+-- Table structure for table `departamentos`
 --
 
 CREATE TABLE `departamentos` (
@@ -288,7 +275,7 @@ CREATE TABLE `departamentos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `departamentos`
+-- Dumping data for table `departamentos`
 --
 
 INSERT INTO `departamentos` (`id`, `nombre`, `created_at`, `updated_at`) VALUES
@@ -328,7 +315,7 @@ INSERT INTO `departamentos` (`id`, `nombre`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `failed_jobs`
+-- Table structure for table `failed_jobs`
 --
 
 CREATE TABLE `failed_jobs` (
@@ -344,7 +331,7 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `formats`
+-- Table structure for table `formats`
 --
 
 CREATE TABLE `formats` (
@@ -355,7 +342,7 @@ CREATE TABLE `formats` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `formats`
+-- Dumping data for table `formats`
 --
 
 INSERT INTO `formats` (`id`, `formato`, `created_at`, `updated_at`) VALUES
@@ -365,7 +352,7 @@ INSERT INTO `formats` (`id`, `formato`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `jobs`
+-- Table structure for table `jobs`
 --
 
 CREATE TABLE `jobs` (
@@ -381,7 +368,7 @@ CREATE TABLE `jobs` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `job_batches`
+-- Table structure for table `job_batches`
 --
 
 CREATE TABLE `job_batches` (
@@ -400,7 +387,7 @@ CREATE TABLE `job_batches` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -410,7 +397,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -432,7 +419,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `password_reset_tokens`
+-- Table structure for table `password_reset_tokens`
 --
 
 CREATE TABLE `password_reset_tokens` (
@@ -442,61 +429,79 @@ CREATE TABLE `password_reset_tokens` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `password_reset_tokens`
+-- Dumping data for table `password_reset_tokens`
 --
 
 INSERT INTO `password_reset_tokens` (`email`, `token`, `created_at`) VALUES
-('admin@example.com', '$2y$12$uo5cVVE0AbuuwH3yG9WZsOM7oLD/2XpU0VQYeWevM48DQ0U/w4AMW', '2025-04-24 01:22:01'),
+('admin@example.com', '$2y$12$IlgQX0seUJ59ng4wR0eliOQiJEiZ8QlDDvHBaXaAu0nMOFVUr67F6', '2025-05-11 23:43:51'),
 ('julio@example.com', '$2y$12$sSTcTjdQ7Y9aG1MK7bwiFeQVVKn/vLRExhvj/evUpDZXbqQUOFtkO', '2025-02-21 00:09:59');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `products`
+-- Table structure for table `products`
 --
 
 CREATE TABLE `products` (
   `id` bigint UNSIGNED NOT NULL,
-  `nombre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descripcion` text COLLATE utf8mb4_unicode_ci,
+  `nombre` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `precio_regular` decimal(10,2) NOT NULL,
   `precio_oferta` decimal(10,2) DEFAULT NULL,
   `composition_option_id` bigint UNSIGNED NOT NULL,
   `format_id` bigint UNSIGNED NOT NULL,
   `category_id` bigint UNSIGNED NOT NULL,
   `unidades_disponibles` int NOT NULL DEFAULT '0',
-  `imagen_portada` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `imagen_portada` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `nombre`, `descripcion`, `precio_regular`, `precio_oferta`, `composition_option_id`, `format_id`, `category_id`, `unidades_disponibles`, `imagen_portada`, `url`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(23, 'TEST PRODUCT', 'qwe qw we ae', 999999.00, 12312.00, 2, 2, 1, 3, 'products/qnK9VhRrd7X3WSReIbz06GXAgafrzzvnEtVuEJ5l.png', 'https://www.studocu.com/co/document/servicio-nacional-de-aprendizaje/tecnologo-en-analisis-y-desarrollo-de-software/cuestionario-ga2-240202501-aa1-ev01-ingles/58275504', NULL, '2025-05-11 23:04:27', '2025-05-11 23:04:27'),
+(24, 'PRODUCTO PRUEBA', 'qweqw eqwe12312 asd123123', 50000.00, 12312.00, 2, 2, 7, 3, 'products/7qVSapKcHVIXOgyfyj10NIPGqUfzFspIeySEGUmC.png', 'https://www.studocu.com/co/document/servicio-nacional-de-aprendizaje/tecnologo-en-analisis-y-desarrollo-de-software/cuestionario-ga2-240202501-aa1-ev01-ingles/58275504', NULL, '2025-05-11 23:05:05', '2025-05-11 23:05:05'),
+(25, 'CREADO DESDE JENINSON', 'Texto de prueba', 85000.00, NULL, 2, 2, 9, 8, 'products/0ZIwMb7yU8R9TGJFCmsSMYvyibzJkPMtgjrsNl82.png', 'https://www.studocu.com/co/document/servicio-nacional-de-aprendizaje/tecnologo-en-analisis-y-desarrollo-de-software/cuestionario-ga2-240202501-aa1-ev01-ingles/58275504', NULL, '2025-05-11 23:47:41', '2025-05-11 23:47:41');
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `product_attributes`
+-- Table structure for table `product_attributes`
 --
 
 CREATE TABLE `product_attributes` (
   `id` bigint UNSIGNED NOT NULL,
   `product_id` bigint UNSIGNED NOT NULL,
-  `nombre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descripcion` text COLLATE utf8mb4_unicode_ci,
+  `nombre` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `product_attributes`
+--
+
+INSERT INTO `product_attributes` (`id`, `product_id`, `nombre`, `descripcion`, `created_at`, `updated_at`) VALUES
+(23, 23, 'Peso real', '255 g', '2025-05-11 23:04:27', '2025-05-11 23:04:27'),
+(24, 24, 'COLOR', 'MORADO', '2025-05-11 23:05:05', '2025-05-11 23:05:05'),
+(25, 25, 'Peso real', '255 g', '2025-05-11 23:47:41', '2025-05-11 23:47:41');
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `product_compositions`
+-- Table structure for table `product_compositions`
 --
 
 CREATE TABLE `product_compositions` (
   `id` bigint UNSIGNED NOT NULL,
   `product_id` bigint UNSIGNED NOT NULL,
-  `nombre_campo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nombre_campo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `category_id` bigint UNSIGNED DEFAULT NULL,
   `articulo_id` bigint UNSIGNED DEFAULT NULL,
   `precio_adicional` decimal(10,2) NOT NULL DEFAULT '0.00',
@@ -507,37 +512,58 @@ CREATE TABLE `product_compositions` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `product_galleries`
+-- Table structure for table `product_galleries`
 --
 
 CREATE TABLE `product_galleries` (
   `id` bigint UNSIGNED NOT NULL,
   `product_id` bigint UNSIGNED NOT NULL,
-  `imagen_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `imagen_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `orden` int NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `product_galleries`
+--
+
+INSERT INTO `product_galleries` (`id`, `product_id`, `imagen_url`, `orden`, `created_at`, `updated_at`) VALUES
+(1, 23, 'products/gallery/0lTExKucXzYoTcDwQhqB49Gy3ea6VN6dfsDEFHZz.png', 0, '2025-05-11 23:04:27', '2025-05-11 23:04:27'),
+(2, 24, 'products/gallery/1xOdXAqcAGSDAeqlpsfcqMblwBqJPQcXNS4aBnU2.png', 0, '2025-05-11 23:05:05', '2025-05-11 23:05:05'),
+(3, 24, 'products/gallery/ivOB5p2B3BDfheDUxhWWgTUPNw3etjdrSvD0NOx4.png', 0, '2025-05-11 23:05:05', '2025-05-11 23:05:05'),
+(4, 24, 'products/gallery/WhDcw0I2I6it1bRFYcwL5cSIi6aXdsRMpW9V6Ptc.jpg', 0, '2025-05-11 23:05:05', '2025-05-11 23:05:05'),
+(5, 25, 'products/gallery/p2TwTAiusr7TSBxEoCSiminxrt2poTr3ZmWtEm8D.png', 0, '2025-05-11 23:47:41', '2025-05-11 23:47:41'),
+(6, 25, 'products/gallery/T3ypYlY3gg8G1utE7dMAKB0kn4B52FkytoNuzGNW.png', 0, '2025-05-11 23:47:41', '2025-05-11 23:47:41');
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `product_shippings`
+-- Table structure for table `product_shippings`
 --
 
 CREATE TABLE `product_shippings` (
   `id` bigint UNSIGNED NOT NULL,
   `product_id` bigint UNSIGNED NOT NULL,
   `envio_gratis` tinyint(1) NOT NULL DEFAULT '0',
-  `costo_envio` decimal(10,2) DEFAULT NULL,
+  `costo_envio` bigint DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `product_shippings`
+--
+
+INSERT INTO `product_shippings` (`id`, `product_id`, `envio_gratis`, `costo_envio`, `created_at`, `updated_at`) VALUES
+(22, 23, 1, 0, '2025-05-11 23:04:27', '2025-05-11 23:04:27'),
+(23, 24, 0, 123123, '2025-05-11 23:05:05', '2025-05-11 23:05:05'),
+(24, 25, 1, 0, '2025-05-11 23:47:41', '2025-05-11 23:47:41');
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `rol`
+-- Table structure for table `rol`
 --
 
 CREATE TABLE `rol` (
@@ -548,7 +574,7 @@ CREATE TABLE `rol` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `rol`
+-- Dumping data for table `rol`
 --
 
 INSERT INTO `rol` (`id`, `rol`, `created_at`, `updated_at`) VALUES
@@ -558,7 +584,7 @@ INSERT INTO `rol` (`id`, `rol`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `sessions`
+-- Table structure for table `sessions`
 --
 
 CREATE TABLE `sessions` (
@@ -571,16 +597,18 @@ CREATE TABLE `sessions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `sessions`
+-- Dumping data for table `sessions`
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('2FP5Teg3qHVdkA0AQkpdUf2OaP99z3lpM9YxEzEr', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoienB4U3NJTGZlVWF5Snh1SDZNYzlRMGlrbDJCc1k3SE5HdDM1TGd0NSI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjQwOiJodHRwOi8vY3VzdG9tc2hvcHByby50ZXN0L251ZXZvLXByb2R1Y3RvIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Mjt9', 1746891027);
+('OXWel2p4EruVfq7lQYF083hRSsdKSWKexEoIfjp5', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiRVpHNURmM3N4UWlMc01oZmxBZXdsQVB4RlR0MmdmYnhhSVExTUg0TyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM3OiJodHRwOi8vY3VzdG9tc2hvcC50ZXN0L251ZXZvLXByb2R1Y3RvIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Mjt9', 1747185440),
+('qxHQUgD4xczY9PW2tVtLrqQRyF4u0BuGbgNzNyYy', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiQ0JuZDZmNDhhazBFOEdOb2ZZOGlpQklnbXc4TnB2YUdNWXdLNkhPSCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjI6Imh0dHA6Ly9jdXN0b21zaG9wLnRlc3QiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1746982546),
+('ri85iZk6iROYRRNY4rkJuoqCuoUcF9L9idkg8YQq', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiR083cTI3R2toTDk4MWxLcUFSbzdSUzJ4VkJHZURxQmVWWDl1dkRmcyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM3OiJodHRwOi8vY3VzdG9tc2hvcC50ZXN0L251ZXZvLXByb2R1Y3RvIjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Mjt9', 1746990695);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipos_cuentas_bancos`
+-- Table structure for table `tipos_cuentas_bancos`
 --
 
 CREATE TABLE `tipos_cuentas_bancos` (
@@ -591,7 +619,7 @@ CREATE TABLE `tipos_cuentas_bancos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `tipos_cuentas_bancos`
+-- Dumping data for table `tipos_cuentas_bancos`
 --
 
 INSERT INTO `tipos_cuentas_bancos` (`id`, `tipo_cuenta`, `created_at`, `updated_at`) VALUES
@@ -602,7 +630,7 @@ INSERT INTO `tipos_cuentas_bancos` (`id`, `tipo_cuenta`, `created_at`, `updated_
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipo_documento`
+-- Table structure for table `tipo_documento`
 --
 
 CREATE TABLE `tipo_documento` (
@@ -611,7 +639,7 @@ CREATE TABLE `tipo_documento` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `tipo_documento`
+-- Dumping data for table `tipo_documento`
 --
 
 INSERT INTO `tipo_documento` (`id`, `tipoDocu`) VALUES
@@ -623,7 +651,7 @@ INSERT INTO `tipo_documento` (`id`, `tipoDocu`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -646,7 +674,7 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Dumping data for table `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `nombreUs`, `apellidosUs`, `tipo_documento_id`, `numDocu`, `departamento_id`, `ciudad_id`, `direccion`, `rol_id`, `telefono`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
@@ -654,7 +682,7 @@ INSERT INTO `usuarios` (`id`, `nombreUs`, `apellidosUs`, `tipo_documento_id`, `n
 (2, 'JUAN', 'ESCOBAR', 1, '1102831057', 14, 40, 'CLL 1 # 2-3', 1, '3008888888', 'admin@example.com', '$2y$12$skMCyErbax3WG51x53MW4OjJ3nc5vPEPyfuKhtMdBQ3eAM4xV1PCi', NULL, '2025-01-19 07:57:59', '2025-01-19 07:57:59', NULL),
 (3, 'ELIANA', 'TRUJILLO', 1, '888888', 14, 40, 'VEREDA 27', 2, '3338888888', 'eliana@example.com', '$2y$12$WjG5l7f7a/YOEYu7nyItjObnDl2UFN1BYG3/X7rreiwh40UjmdZOW', NULL, '2025-01-20 21:05:53', '2025-03-12 06:19:53', NULL),
 (5, 'ANDREA', 'GUEVARA', 1, '2222222', 28, 82, 'CLL 1 # 2-3', 2, '3000000000', 'andrea@example.com', '$2y$12$8Bl4sGGGndXMC4mZkRfkLOGWSQJZRR5surV5D5YN7hgbrQNNQTSK.', NULL, '2025-01-21 05:40:54', '2025-01-21 05:40:54', NULL),
-(6, 'JENINSON', 'PERALTA', 1, '00002222', 4, 10, 'CRA 20 # 20 - 20', 1, '3001234567', 'jeninson@example.com', '$2y$12$ddyLxJSQiLPgcTRGmXtsoe8VPaZDRC8t11dqfjYoKCFd68WfQlirm', NULL, '2025-01-27 04:56:59', '2025-03-12 06:21:58', NULL),
+(6, 'JENINSON', 'PERALTA', 1, '00002222', 4, 10, 'CRA 20 # 20 - 20', 1, '3001234567', 'jeninson@example.com', '$2y$12$BLqsOuKjyus06tz8YcsnDe95O43eXlgsLOryrvPl9C7ftPLKxgM6G', NULL, '2025-01-27 04:56:59', '2025-03-12 06:21:58', NULL),
 (7, 'DANIEL', 'RAMIREZ', 2, '9888444', 30, 88, 'CRA 1 # 99-99', 2, '3008888887', 'daniel@example.com', '$2y$12$MsRdqdJJpnOcN8p1qPJ3wevHEEsLvFNj2pekocSIBjywrkBAUEIFW', NULL, '2025-01-30 23:09:14', '2025-03-12 06:21:43', '2025-03-12 06:21:43'),
 (8, 'PRUEBA 2', 'TEST', 3, '1111111', 2, 4, 'ST 155 AV98', 2, '3110000000', 'test@example.com', '$2y$12$I9QMLn92v59vMfrRCtcOp.csAS3i0Hn.pqcJ1ySK4SPpFPYO1qDlS', NULL, '2025-01-30 23:36:17', '2025-03-12 06:21:40', '2025-03-12 06:21:40'),
 (9, 'PRUEBA', 'SERVIDOR', 1, '988888888', 1, 1, 'CRA 66 # 110D - 14', 1, '3222940325', 'juanster1w@hotmail.com', '$2y$12$LxNX4HYbDhX3SpQWPkZPZeTSqufB4EPy8N0J9h.3lsLdwLpC0HFPq', NULL, '2025-02-05 03:55:30', '2025-03-12 06:21:38', '2025-03-12 06:21:38'),
@@ -663,99 +691,93 @@ INSERT INTO `usuarios` (`id`, `nombreUs`, `apellidosUs`, `tipo_documento_id`, `n
 (12, 'JULIO', 'GUEVARA', 2, '9987878', 4, 10, 'AV 68 # 88 - 77', 2, '3008888888', 'julio@example.com', '$2y$12$rp4J.bxlZJUqJmU90JV0F.fbIDOhQz9gb4IUNbW9XO/N7IGgTBJKe', NULL, '2025-02-21 00:02:02', '2025-03-12 06:21:19', '2025-03-12 06:21:19');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `banks`
+-- Indexes for table `banks`
 --
 ALTER TABLE `banks`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `cache`
+-- Indexes for table `cache`
 --
 ALTER TABLE `cache`
   ADD PRIMARY KEY (`key`);
 
 --
--- Indices de la tabla `cache_locks`
+-- Indexes for table `cache_locks`
 --
 ALTER TABLE `cache_locks`
   ADD PRIMARY KEY (`key`);
 
 --
--- Indices de la tabla `categories`
+-- Indexes for table `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `ciudades`
+-- Indexes for table `ciudades`
 --
 ALTER TABLE `ciudades`
   ADD PRIMARY KEY (`id`),
   ADD KEY `ciudades_departamento_id_foreign` (`departamento_id`);
 
 --
--- Indices de la tabla `composition_options`
---
-ALTER TABLE `composition_options`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `composition_types`
+-- Indexes for table `composition_types`
 --
 ALTER TABLE `composition_types`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `departamentos`
+-- Indexes for table `departamentos`
 --
 ALTER TABLE `departamentos`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `departamentos_nombre_unique` (`nombre`);
 
 --
--- Indices de la tabla `failed_jobs`
+-- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Indices de la tabla `formats`
+-- Indexes for table `formats`
 --
 ALTER TABLE `formats`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `jobs`
+-- Indexes for table `jobs`
 --
 ALTER TABLE `jobs`
   ADD PRIMARY KEY (`id`),
   ADD KEY `jobs_queue_index` (`queue`);
 
 --
--- Indices de la tabla `job_batches`
+-- Indexes for table `job_batches`
 --
 ALTER TABLE `job_batches`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `migrations`
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `password_reset_tokens`
+-- Indexes for table `password_reset_tokens`
 --
 ALTER TABLE `password_reset_tokens`
   ADD PRIMARY KEY (`email`);
 
 --
--- Indices de la tabla `products`
+-- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
@@ -764,14 +786,14 @@ ALTER TABLE `products`
   ADD KEY `products_category_id_foreign` (`category_id`);
 
 --
--- Indices de la tabla `product_attributes`
+-- Indexes for table `product_attributes`
 --
 ALTER TABLE `product_attributes`
   ADD PRIMARY KEY (`id`),
   ADD KEY `product_attributes_product_id_foreign` (`product_id`);
 
 --
--- Indices de la tabla `product_compositions`
+-- Indexes for table `product_compositions`
 --
 ALTER TABLE `product_compositions`
   ADD PRIMARY KEY (`id`),
@@ -779,27 +801,27 @@ ALTER TABLE `product_compositions`
   ADD KEY `product_compositions_category_id_foreign` (`category_id`);
 
 --
--- Indices de la tabla `product_galleries`
+-- Indexes for table `product_galleries`
 --
 ALTER TABLE `product_galleries`
   ADD PRIMARY KEY (`id`),
   ADD KEY `product_galleries_product_id_foreign` (`product_id`);
 
 --
--- Indices de la tabla `product_shippings`
+-- Indexes for table `product_shippings`
 --
 ALTER TABLE `product_shippings`
   ADD PRIMARY KEY (`id`),
   ADD KEY `product_shippings_product_id_foreign` (`product_id`);
 
 --
--- Indices de la tabla `rol`
+-- Indexes for table `rol`
 --
 ALTER TABLE `rol`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `sessions`
+-- Indexes for table `sessions`
 --
 ALTER TABLE `sessions`
   ADD PRIMARY KEY (`id`),
@@ -807,19 +829,19 @@ ALTER TABLE `sessions`
   ADD KEY `sessions_last_activity_index` (`last_activity`);
 
 --
--- Indices de la tabla `tipos_cuentas_bancos`
+-- Indexes for table `tipos_cuentas_bancos`
 --
 ALTER TABLE `tipos_cuentas_bancos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `tipo_documento`
+-- Indexes for table `tipo_documento`
 --
 ALTER TABLE `tipo_documento`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`),
@@ -828,135 +850,129 @@ ALTER TABLE `usuarios`
   ADD KEY `usuarios_ciudad_id_foreign` (`ciudad_id`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `banks`
+-- AUTO_INCREMENT for table `banks`
 --
 ALTER TABLE `banks`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT de la tabla `categories`
+-- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT de la tabla `ciudades`
+-- AUTO_INCREMENT for table `ciudades`
 --
 ALTER TABLE `ciudades`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
--- AUTO_INCREMENT de la tabla `composition_options`
+-- AUTO_INCREMENT for table `composition_types`
 --
-ALTER TABLE `composition_options`
+ALTER TABLE `composition_types`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `composition_types`
---
-ALTER TABLE `composition_types`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `departamentos`
+-- AUTO_INCREMENT for table `departamentos`
 --
 ALTER TABLE `departamentos`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
--- AUTO_INCREMENT de la tabla `failed_jobs`
+-- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `formats`
+-- AUTO_INCREMENT for table `formats`
 --
 ALTER TABLE `formats`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `jobs`
+-- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `migrations`
+-- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT de la tabla `products`
+-- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT de la tabla `product_attributes`
+-- AUTO_INCREMENT for table `product_attributes`
 --
 ALTER TABLE `product_attributes`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT de la tabla `product_compositions`
+-- AUTO_INCREMENT for table `product_compositions`
 --
 ALTER TABLE `product_compositions`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `product_galleries`
+-- AUTO_INCREMENT for table `product_galleries`
 --
 ALTER TABLE `product_galleries`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT de la tabla `product_shippings`
+-- AUTO_INCREMENT for table `product_shippings`
 --
 ALTER TABLE `product_shippings`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT de la tabla `rol`
+-- AUTO_INCREMENT for table `rol`
 --
 ALTER TABLE `rol`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `tipos_cuentas_bancos`
+-- AUTO_INCREMENT for table `tipos_cuentas_bancos`
 --
 ALTER TABLE `tipos_cuentas_bancos`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `tipo_documento`
+-- AUTO_INCREMENT for table `tipo_documento`
 --
 ALTER TABLE `tipo_documento`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT de la tabla `usuarios`
+-- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `ciudades`
+-- Constraints for table `ciudades`
 --
 ALTER TABLE `ciudades`
   ADD CONSTRAINT `ciudades_departamento_id_foreign` FOREIGN KEY (`departamento_id`) REFERENCES `departamentos` (`id`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `products`
+-- Constraints for table `products`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `products_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`),
@@ -964,32 +980,32 @@ ALTER TABLE `products`
   ADD CONSTRAINT `products_format_id_foreign` FOREIGN KEY (`format_id`) REFERENCES `formats` (`id`);
 
 --
--- Filtros para la tabla `product_attributes`
+-- Constraints for table `product_attributes`
 --
 ALTER TABLE `product_attributes`
   ADD CONSTRAINT `product_attributes_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
 
 --
--- Filtros para la tabla `product_compositions`
+-- Constraints for table `product_compositions`
 --
 ALTER TABLE `product_compositions`
   ADD CONSTRAINT `product_compositions_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`),
   ADD CONSTRAINT `product_compositions_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
 
 --
--- Filtros para la tabla `product_galleries`
+-- Constraints for table `product_galleries`
 --
 ALTER TABLE `product_galleries`
   ADD CONSTRAINT `product_galleries_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
 
 --
--- Filtros para la tabla `product_shippings`
+-- Constraints for table `product_shippings`
 --
 ALTER TABLE `product_shippings`
   ADD CONSTRAINT `product_shippings_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
 
 --
--- Filtros para la tabla `usuarios`
+-- Constraints for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD CONSTRAINT `usuarios_ciudad_id_foreign` FOREIGN KEY (`ciudad_id`) REFERENCES `ciudades` (`id`) ON DELETE CASCADE,
