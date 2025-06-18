@@ -105,7 +105,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="category_id" class="form-label">Categoría <span class="text-danger">*</span></label>
-                        <select class="form-select @error('category_id') is-invalid @enderror" name="category_id" id="category_id" aria-label="Default select example" required>
+                        <select class="form-select @error('category_id_pro') is-invalid @enderror" name="category_id_pro" id="category_id_pro" aria-label="Default select example" required>
                             <option value="" selected disabled>Seleccione</option>
                             @foreach ($listCategories as $category )
                             <option value="{{$category->id}}">{{$category->nombre}}</option>
