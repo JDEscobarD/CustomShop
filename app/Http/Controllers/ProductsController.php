@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\CompositionType;
 use App\Models\Format;
+use Illuminate\Support\Str;
 
 class ProductsController extends Controller
 {
@@ -47,7 +48,7 @@ class ProductsController extends Controller
             'format_id' => 'required|exists:formats,id',
             'category_id' => 'required|exists:categories,id',
             'unidades_disponibles' => 'nullable|integer|min:0',
-            'url' => 'nullable|url',
+            'url' => 'nullable|string',
             'imagen_portada' => 'nullable|image|max:3000',
             'gallery.*' => 'nullable|image|max:5000',
             'attributes.*.nombre' => 'nullable|string',
@@ -70,9 +71,17 @@ class ProductsController extends Controller
 
             $product = Product::create($validated);
 
+            // Generar el slug y asegurarse de que sea único
+            $slug = Str::slug($request->nombre);
+            $count = Product::where('url', 'LIKE', "$slug%")->count();
+            if ($count > 0) {
+                $slug = $slug . '-' . ($count + 1);
+            }
+            $product->url = $slug;
+            $product->save();
+
             $this->handleAttributes($product, $request);
             $this->handleCompositions($product, $request);
-            $this->handleShipping($product, $request);
             $this->handleGallery($product, $request);
 
             DB::commit();
@@ -110,13 +119,7 @@ class ProductsController extends Controller
         }
     }
 
-    private function handleShipping(Product $product, Request $request)
-    {
-        $product->shipping()->create([
-            'envio_gratis' => $request->input('envio_gratis', false),
-            'costo_envio' => $request->input('costo_envio', 0)
-        ]);
-    }
+
 
     private function handleGallery(Product $product, Request $request)
     {
@@ -155,5 +158,11 @@ class ProductsController extends Controller
                 ]);
             }
         }
+    }
+
+    public function getProductsByCategory(Category $category)
+    {
+        $products = Product::where('category_id', $category->id)->get();
+        return response()->json($products);
     }
 }

@@ -20,7 +20,9 @@ class Product extends Model
         'category_id',
         'unidades_disponibles',
         'imagen_portada',
-        'url'
+        'url',
+        'envio_gratis',
+        'costo_envio'
     ];
 
     // Relaciones
@@ -49,10 +51,7 @@ class Product extends Model
         return $this->hasMany(ProductComposition::class);
     }
 
-    public function shipping()
-    {
-        return $this->hasOne(ProductShipping::class);
-    }
+
 
     public function gallery()
     {

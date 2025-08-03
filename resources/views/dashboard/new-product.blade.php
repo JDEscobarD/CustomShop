@@ -105,7 +105,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="category_id" class="form-label">Categoría <span class="text-danger">*</span></label>
-                        <select class="form-select @error('category_id_pro') is-invalid @enderror" name="category_id_pro" id="category_id_pro" aria-label="Default select example" required>
+                        <select class="form-select @error('category_id') is-invalid @enderror" name="category_id" id="category_id" aria-label="Default select example" required>
                             <option value="" selected disabled>Seleccione</option>
                             @foreach ($listCategories as $category )
                             <option value="{{$category->id}}">{{$category->nombre}}</option>
@@ -138,8 +138,11 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="url" class="form-label d-flex justify-content-between"><span>URL <span class="text-danger">*</span></span> <span>Vista previa</span></label>
-                        <input type="text" class="form-control @error('url') is-invalid @enderror" id="url" name="url" placeholder="https://" required>
+                        <label for="url" class="form-label d-flex justify-content-between"><span>URL</span> <span>Vista previa</span></label>
+                        <div class="input-group">
+                            <span class="input-group-text" id="basic-addon3">{{ config('app.url') }}/</span>
+                            <input type="text" class="form-control @error('url') is-invalid @enderror" id="url" name="url" placeholder="" readonly>
+                        </div>
                         @error('url')
                         <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
@@ -173,5 +176,59 @@
 <script src="{{ asset('assets/js/tabs-product.js') }}" defer></script>
 <script src="{{ asset('assets/js/thumbnail-product.js') }}" defer></script>
 <script src="{{ asset('assets/js/composition-tab-control.js') }}" defer></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const nombreInput = document.getElementById('nombre');
+    const urlInput = document.getElementById('url');
+    const urlPrefix = '{{ config('app.url') }}/';
+    //Generador de URL automático para el producto
+    nombreInput.addEventListener('keyup', function () {
+        let slug = this.value.toLowerCase()
+            .replace(/\s+/g, '-')
+            .replace(/[ñ]/g, 'n')
+            .replace(/[^\w\-]+/g, '')
+            .replace(/\-\-+/g, '-')
+            .replace(/^-+/, '') 
+            .replace(/-+$/, '');
+        
+        urlInput.value = slug;
+    });
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const categorySelect = document.getElementById('composition_category_id');
+    const articleSelect = document.getElementById('composition_articulo_id');
+
+    if (categorySelect) {
+        categorySelect.addEventListener('change', function () {
+            const categoryId = this.value;
+            articleSelect.innerHTML = '<option value="">Cargando...</option>';
+
+            if (categoryId) {
+                fetch(`/products/by-category/${categoryId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        articleSelect.innerHTML = '<option value="">Seleccione...</option>';
+                        data.forEach(product => {
+                            const option = document.createElement('option');
+                            option.value = product.id;
+                            option.textContent = product.nombre;
+                            articleSelect.appendChild(option);
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        articleSelect.innerHTML = '<option value="">Error al cargar</option>';
+                    });
+            } else {
+                articleSelect.innerHTML = '<option value="">Seleccione una categoría primero...</option>';
+            }
+        });
+    }
+});
+</script>
 
 @endsection

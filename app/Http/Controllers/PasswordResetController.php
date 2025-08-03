@@ -54,10 +54,12 @@ class PasswordResetController extends Controller
         });
 
         
-        return response()->json([
-            'success' => true
-        ]);
+        session(['password_reset_email' => $request->email]);
+
+        return response()->json(['success' => true]);
     }
+
+
 
     //validar el token
     public function validateToken(Request $request)
@@ -76,15 +78,24 @@ class PasswordResetController extends Controller
             ], 422);
         }
 
+        session(['password_reset_email' => $request->email, 'password_reset_token_validated' => true]);
+
         return response()->json([
             'success' => true,
-            'redirect' => route('password.reset.form', ['email' => $request->email])
+            'redirect' => route('password.reset.form')
         ]);
     }
     
     //formulario de cambio de contraseña
-    public function showResetForm($email)
+    public function showResetForm(Request $request)
     {
+        if (!$request->session()->has('password_reset_email') || !$request->session()->get('password_reset_token_validated')) {
+            return redirect()->route('password.request')->with('error', 'Por favor, valida el token para continuar.');
+        }
+
+        $email = $request->session()->get('password_reset_email');
+        $request->session()->forget('password_reset_token_validated');
+
         return view('auth.password-reset', compact('email'));
     }
 
@@ -96,14 +107,17 @@ class PasswordResetController extends Controller
             'password' => 'required|confirmed|min:8'
         ]);
 
-        
-        DB::table('usuarios')->where('email', $request->email)->update([
+        $email = $request->input('email');
+
+        DB::table('usuarios')->where('email', $email)->update([
             'password' => bcrypt($request->password),
         ]);
 
         
-        DB::table('password_reset_tokens')->where('email', $request->email)->delete();
+        DB::table('password_reset_tokens')->where('email', $email)->delete();
 
-        return redirect()->route('login')->with('status', '¡Contraseña actualizada exitosamente!');
+        $request->session()->forget(['password_reset_email', 'password_reset_token_validated']);
+
+        return redirect()->route('login')->with('status', '¡Contraseña actualizada exitosamente! Ya puedes iniciar sesión.');
     }
 }

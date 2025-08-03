@@ -21,7 +21,7 @@ Route::middleware('guest')->group(function () {
 
     Route::post('cambiar-contrasena', [PasswordResetController::class, 'sendResetToken'])->name('password.pin');
     Route::post('cambiar-contrasena/validacion', [PasswordResetController::class, 'validateToken'])->name('password.validate');    
-    Route::get('cambiar-contrasena/{email}', [PasswordResetController::class, 'showResetForm'])->name('password.reset.form');
+    Route::get('cambiar-contrasena/reset-form', [PasswordResetController::class, 'showResetForm'])->name('password.reset.form');
     Route::post('cambiar-contrasena/reset', [PasswordResetController::class, 'resetPassword'])->name('password.reset');
 });
 
