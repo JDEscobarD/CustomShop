@@ -39,11 +39,33 @@ class ProductsController extends Controller
     {
         // dd($request->all()); // PARA DEPURAR POR SI HAY ALGÚN ERROR
 
+        // Limpiar campos de precio antes de la validación
+        $input = $request->all();
+        $priceFields = ['precio_regular', 'precio_oferta', 'costo_envio'];
+        foreach ($priceFields as $field) {
+            if (isset($input[$field]) && is_string($input[$field])) {
+                // Elimina todos los caracteres que no sean dígitos.
+                $input[$field] = preg_replace('/[^\d]/', '', $input[$field]);
+            }
+        }
+        if (isset($input['compositions']) && is_array($input['compositions'])) {
+            foreach ($input['compositions'] as $compKey => $composition) {
+                if (isset($composition['fields']) && is_array($composition['fields'])) {
+                    foreach ($composition['fields'] as $fieldKey => $field) {
+                        if (isset($field['precio_adicional']) && is_string($field['precio_adicional'])) {
+                            $input['compositions'][$compKey]['fields'][$fieldKey]['precio_adicional'] = preg_replace('/[^\d]/', '', $field['precio_adicional']);
+                        }
+                    }
+                }
+            }
+        }
+        $request->replace($input);
+
         $validationRules = [
             'nombre' => 'required|string|max:255',
             'descripcion' => 'nullable|string',
-            'precio_regular' => 'required|numeric|min:0',
-            'precio_oferta' => 'nullable|numeric|min:0',
+            'precio_regular' => 'required|string',
+            'precio_oferta' => 'nullable|string',
             'composition_option_id' => 'required|exists:composition_types,id',
             'format_id' => 'required|exists:formats,id',
             'category_id' => 'required|exists:categories,id',
@@ -54,22 +76,24 @@ class ProductsController extends Controller
             'attributes.*.nombre' => 'nullable|string',
             'attributes.*.descripcion' => 'nullable|string',
             'envio_gratis' => 'nullable|boolean',
-            'costo_envio' => 'nullable|numeric|min:0'
+            'costo_envio' => 'nullable|string'
         ];
     
-        if ($request->composition_option_id != 2) {
-            $validationRules['compositions.*.nombre_campo'] = 'nullable|string';
-            $validationRules['compositions.*.category_id'] = 'nullable|exists:categories,id';
-            $validationRules['compositions.*.articulo_id'] = 'nullable|exists:articulos,id';
-            $validationRules['compositions.*.precio_adicional'] = 'nullable|numeric|min:0';
+        if ($request->composition_option_id == 1) { // Si es un producto compuesto
+            $validationRules['compositions.*.nombre_campo'] = 'required|string';
+            $validationRules['compositions.*.fields.*.articulo_id'] = 'required|exists:products,id';
+            $validationRules['compositions.*.fields.*.precio_adicional'] = 'nullable|string';
         }
 
         $validated = $request->validate($validationRules);
 
+        // Si el checkbox no está marcado, no se envía. Lo seteamos a 0.
+        $validated['envio_gratis'] = $request->has('envio_gratis') ? 1 : 0;
+
         try {
             DB::beginTransaction();
 
-            $product = Product::create($validated);
+            $product = Product::create(\Illuminate\Support\Arr::except($validated, ['attributes', 'compositions', 'gallery']));
 
             // Generar el slug y asegurarse de que sea único
             $slug = Str::slug($request->nombre);
@@ -107,14 +131,22 @@ class ProductsController extends Controller
 
     private function handleCompositions(Product $product, Request $request)
     {
-        if ($request->composition_option_id != 2 && $request->has('compositions')) { 
-            foreach ($request->input('compositions') as $composition) {
-                $product->compositions()->create([
-                    'nombre_campo' => $composition['nombre_campo'],
-                    'category_id' => $composition['category_id'],
-                    'articulo_id' => $composition['articulo_id'],
-                    'precio_adicional' => $composition['precio_adicional']
+        if ($request->composition_option_id == 1 && $request->has('compositions')) {
+            foreach ($request->input('compositions') as $compositionData) {
+                // Create the main composition group
+                $productComposition = $product->compositions()->create([
+                    'nombre_campo' => $compositionData['nombre_campo'],
                 ]);
+
+                if (isset($compositionData['fields']) && is_array($compositionData['fields'])) {
+                    foreach ($compositionData['fields'] as $fieldData) {
+                        // Create the options for that group
+                        $productComposition->options()->create([
+                            'option_product_id' => $fieldData['articulo_id'],
+                            'precio_adicional' => $fieldData['precio_adicional'] ?? 0,
+                        ]);
+                    }
+                }
             }
         }
     }
@@ -162,7 +194,9 @@ class ProductsController extends Controller
 
     public function getProductsByCategory(Category $category)
     {
-        $products = Product::where('category_id', $category->id)->get();
+        $products = Product::where('category_id', $category->id)
+                            ->where('composition_option_id', '!=', 1) // Asumiendo que 1 = 'Sí' es para productos compuestos
+                            ->get();
         return response()->json($products);
     }
 }

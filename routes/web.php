@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
     Route::post('productos/store', [ProductsController::class, 'store'])->name('products.store');
     Route::get('/products/by-category/{category}', [ProductsController::class, 'getProductsByCategory'])->name('products.by.category');
+    Route::get('/api/categories/{category}/products', [ProductsController::class, 'getProductsByCategory']);
 });
 
 //Incluir rutas de autenticación

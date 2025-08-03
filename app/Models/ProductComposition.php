@@ -12,9 +12,6 @@ class ProductComposition extends Model
     protected $fillable = [
         'product_id',
         'nombre_campo',
-        'category_id',
-        'articulo_id',
-        'precio_adicional'
     ];
 
     public function product()
@@ -22,8 +19,8 @@ class ProductComposition extends Model
         return $this->belongsTo(Product::class);
     }
 
-    public function category()
+    public function options()
     {
-        return $this->belongsTo(Category::class);
+        return $this->hasMany(ProductCompositionOption::class);
     }
 }

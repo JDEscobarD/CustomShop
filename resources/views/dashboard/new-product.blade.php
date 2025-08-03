@@ -138,7 +138,7 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="url" class="form-label d-flex justify-content-between"><span>URL</span> <span>Vista previa</span></label>
+                        <label for="url" class="form-label d-flex justify-content-between">URL</label>
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon3">{{ config('app.url') }}/</span>
                             <input type="text" class="form-control @error('url') is-invalid @enderror" id="url" name="url" placeholder="" readonly>
@@ -176,6 +176,25 @@
 <script src="{{ asset('assets/js/tabs-product.js') }}" defer></script>
 <script src="{{ asset('assets/js/thumbnail-product.js') }}" defer></script>
 <script src="{{ asset('assets/js/composition-tab-control.js') }}" defer></script>
+<script src="{{ asset('assets/js/price-formatter.js') }}" defer></script>
+<script src="{{ asset('assets/js/shipping-options.js') }}" defer></script>
+<script src="{{ asset('assets/js/compositions.js') }}" defer></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    setTimeout(function() {
+        let successAlert = document.querySelector('.alert-success');
+        if (successAlert) {
+            successAlert.style.display = 'none';
+        }
+
+        let errorAlert = document.querySelector('.alert-danger');
+        if (errorAlert) {
+            errorAlert.style.display = 'none';
+        }
+    }, 3000);
+});
+</script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
