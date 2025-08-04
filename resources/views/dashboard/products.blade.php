@@ -100,10 +100,10 @@
                         </td>
                         <td>
                             <a href="{{ url('dashboard/products/' . $product->id . '/edit') }}" class="btn btn-primary me-2">Editar</a>
-                            <form action="{{ url('dashboard/products/' . $product->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('¿Estás seguro de que quieres eliminar este producto?');">
+                            <form action="{{ route('products.destroy', $product->id) }}" method="POST" class="d-inline-block" id="delete-form-{{ $product->id }}">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-outline-danger">Eliminar</button>
+                                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete({{ $product->id }})">Eliminar</button>
                             </form>
                         </td>
                     </tr>
@@ -139,3 +139,31 @@
 </div>
 
 @endsection
+
+<x-modal id="deleteConfirmModal" title="Confirmar Eliminación">
+    <p>¿Estás seguro de que quieres eliminar este producto?</p>
+    @slot('footer')
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+    <button type="button" class="btn btn-danger" id="confirmDeleteButton">Eliminar</button>
+    @endslot
+</x-modal>
+
+@push('scripts')
+<script>
+function confirmDelete(productId) {
+    const form = document.getElementById('delete-form-' + productId);
+    const modal = new bootstrap.Modal(document.getElementById('deleteConfirmModal'));
+    const confirmButton = document.getElementById('confirmDeleteButton');
+
+    // Clonamos y reemplazamos el botón para eliminar listeners anteriores
+    const newConfirmButton = confirmButton.cloneNode(true);
+    confirmButton.parentNode.replaceChild(newConfirmButton, confirmButton);
+
+    newConfirmButton.addEventListener('click', () => {
+        form.submit();
+    });
+
+    modal.show();
+}
+</script>
+@endpush

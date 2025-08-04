@@ -10,6 +10,8 @@ use App\Models\Category;
 use App\Models\CompositionType;
 use App\Models\Format;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Gallery;
 
 class ProductsController extends Controller
 {
@@ -159,6 +161,64 @@ class ProductsController extends Controller
 
 
 
+    public function edit(Product $product)
+    {
+        $categories = Category::orderBy('nombre')->get();
+        $listOptions = CompositionType::orderBy('opcion')->get();
+        $formats = Format::orderBy('formato')->get();
+        $listCategories = Category::orderBy('nombre')->get();
+
+        $product->load('attributes', 'compositions.options.product', 'gallery');
+
+        return view('dashboard.edit-product', compact(
+            'product',
+            'categories',
+            'listOptions',
+            'formats',
+            'listCategories'
+        ));
+    }
+
+    public function update(Request $request, Product $product)
+    {
+        // Lógica de limpieza y validación similar a store()
+        $validated = $request->validate([
+            'nombre' => 'required|string|max:255',
+            'descripcion' => 'nullable|string',
+            'precio_regular' => 'required|numeric',
+            'precio_oferta' => 'nullable|numeric',
+            'category_id' => 'required|exists:categories,id',
+            'unidades_disponibles' => 'nullable|integer|min:0',
+            // ... otras reglas de validación
+        ]);
+
+        try {
+            DB::beginTransaction();
+
+            $product->update($validated);
+
+            // Actualizar relaciones (atributos, composiciones, galería)
+            // (Esta lógica puede ser compleja y requerir métodos dedicados)
+
+            DB::commit();
+
+            return redirect()->route('products')->with('success', '¡Producto actualizado exitosamente!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->with('error', 'Error: ' . $e->getMessage())->withInput();
+        }
+    }
+
+    public function destroy(Product $product)
+    {
+        try {
+            $product->delete();
+            return redirect()->route('products')->with('success', 'Producto eliminado exitosamente.');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Error al eliminar el producto: ' . $e->getMessage());
+        }
+    }
+
     private function handleGallery(Product $product, Request $request)
     {
         Log::info('Storage public path: ' . storage_path('app/public'));
@@ -195,6 +255,22 @@ class ProductsController extends Controller
                     'orden' => 0
                 ]);
             }
+        }
+    }
+
+    public function destroyImage(Gallery $image)
+    {
+        try {
+            // Eliminar el archivo de almacenamiento
+            Storage::disk('public')->delete($image->imagen_url);
+            
+            // Eliminar el registro de la base de datos
+            $image->delete();
+
+            return response()->json(['success' => 'Imagen eliminada exitosamente.']);
+        } catch (\Exception $e) {
+            Log::error("Error al eliminar imagen: " . $e->getMessage());
+            return response()->json(['error' => 'Error al eliminar la imagen.'], 500);
         }
     }
 

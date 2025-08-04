@@ -8,7 +8,7 @@ use App\Http\Controllers\ProductsController;
 
 //Rutas públicas
 Route::get('/store', [ProductsController::class, 'shopIndex'])->name('store.index');
-Route::get('/producto/{product}', [ProductsController::class, 'show'])->name('shop.product.show');
+Route::get('store/producto/{product}', [ProductsController::class, 'show'])->name('shop.product.show');
 
 Route::middleware('guest')->group(function () {
 });
@@ -34,6 +34,10 @@ Route::middleware('auth')->group(function () {
     //Logout
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
     Route::post('productos/store', [ProductsController::class, 'store'])->name('products.store');
+    Route::get('dashboard/products/{product}/edit', [ProductsController::class, 'edit'])->name('products.edit');
+    Route::put('dashboard/products/{product}', [ProductsController::class, 'update'])->name('products.update');
+    Route::delete('dashboard/products/{product}', [ProductsController::class, 'destroy'])->name('products.destroy');
+    Route::delete('/gallery/{image}', [ProductsController::class, 'destroyImage'])->name('gallery.destroy');
     Route::get('/products/by-category/{category}', [ProductsController::class, 'getProductsByCategory'])->name('products.by.category');
     Route::get('/api/categories/{category}/products', [ProductsController::class, 'getProductsByCategory']);
 });

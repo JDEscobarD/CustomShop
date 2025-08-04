@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 03-08-2025 a las 23:18:37
+-- Tiempo de generación: 04-08-2025 a las 01:24:20
 -- Versión del servidor: 8.4.3
 -- Versión de PHP: 8.3.16
 
@@ -122,7 +122,8 @@ INSERT INTO `categories` (`id`, `nombre`, `descripcion`, `created_at`, `updated_
 (12, 'FRENOS', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget dui varius risus venenatis gravida.', '2025-01-27 06:10:54', '2025-01-27 06:10:54', NULL),
 (13, 'AMORTIGUADORES', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', '2025-01-30 19:18:11', '2025-02-24 21:02:51', NULL),
 (23, 'test 1', 'asdasdasdasd', '2025-04-17 03:09:53', '2025-04-17 03:10:08', '2025-04-17 03:10:08'),
-(24, 'test 2', 'asasdasdasdasd', '2025-04-17 03:10:00', '2025-04-17 03:10:08', '2025-04-17 03:10:08');
+(24, 'test 2', 'asasdasdasdasd', '2025-04-17 03:10:00', '2025-04-17 03:10:08', '2025-04-17 03:10:08'),
+(25, 'BICICLETA TODO TERRENO', 'Bici de montaña y carretera apta para todo tipo de biomas.', '2025-08-04 06:13:34', '2025-08-04 06:13:34', NULL);
 
 -- --------------------------------------------------------
 
@@ -467,14 +468,19 @@ CREATE TABLE `products` (
 INSERT INTO `products` (`id`, `nombre`, `descripcion`, `precio_regular`, `precio_oferta`, `envio_gratis`, `costo_envio`, `composition_option_id`, `format_id`, `category_id`, `unidades_disponibles`, `imagen_portada`, `url`, `deleted_at`, `created_at`, `updated_at`) VALUES
 (23, 'TEST PRODUCT', 'qwe qw we ae', 999999.00, 12312.00, 1, 0.00, 2, 2, 1, 3, 'products/qnK9VhRrd7X3WSReIbz06GXAgafrzzvnEtVuEJ5l.png', 'https://www.studocu.com/co/document/servicio-nacional-de-aprendizaje/tecnologo-en-analisis-y-desarrollo-de-software/cuestionario-ga2-240202501-aa1-ev01-ingles/58275504', NULL, '2025-05-11 23:04:27', '2025-05-11 23:04:27'),
 (24, 'PRODUCTO PRUEBA', 'qweqw eqwe12312 asd123123', 50000.00, 12312.00, 0, 123123.00, 2, 2, 7, 3, 'products/7qVSapKcHVIXOgyfyj10NIPGqUfzFspIeySEGUmC.png', 'https://www.studocu.com/co/document/servicio-nacional-de-aprendizaje/tecnologo-en-analisis-y-desarrollo-de-software/cuestionario-ga2-240202501-aa1-ev01-ingles/58275504', NULL, '2025-05-11 23:05:05', '2025-05-11 23:05:05'),
-(25, 'CREADO DESDE JENINSON', 'Texto de prueba', 85000.00, NULL, 1, 0.00, 2, 2, 9, 8, 'products/0ZIwMb7yU8R9TGJFCmsSMYvyibzJkPMtgjrsNl82.png', 'https://www.studocu.com/co/document/servicio-nacional-de-aprendizaje/tecnologo-en-analisis-y-desarrollo-de-software/cuestionario-ga2-240202501-aa1-ev01-ingles/58275504', NULL, '2025-05-11 23:47:41', '2025-05-11 23:47:41'),
+(25, 'CREADO DESDE JENINSON', 'Texto de prueba', 85000.00, NULL, 1, 0.00, 2, 2, 9, 8, 'products/0ZIwMb7yU8R9TGJFCmsSMYvyibzJkPMtgjrsNl82.png', 'https://www.studocu.com/co/document/servicio-nacional-de-aprendizaje/tecnologo-en-analisis-y-desarrollo-de-software/cuestionario-ga2-240202501-aa1-ev01-ingles/58275504', '2025-08-04 06:09:28', '2025-05-11 23:47:41', '2025-08-04 06:09:28'),
 (26, 'empanada_zl', 'Sed nec vehicula arcu. Integer eget nisi nulla. Nam orci massa, congue quis nisi vitae, interdum hendrerit libero. Suspendisse nec nunc ut justo luctus lacinia vitae eu lacus. Nam elementum felis eget ante mattis consectetur. Suspendisse viverra velit id finibus pharetra. Duis condimentum imperdiet mi sed cursus. Ut efficitur posuere neque.', 30000.00, NULL, 0, 3000.00, 2, 2, 3, 3, 'products/9ptm5RRDpf6uywgN7OFoqLgKKYRBh1F7kWRxwj4L.webp', 'empanada-zl', NULL, '2025-08-04 03:26:06', '2025-08-04 03:26:06'),
 (27, 'Maxxis Ardent 29x2.25 EXO TR', 'Llantas diseñadas para bicicletas de montaña (MTB), ideales para terrenos mixtos. Su banda de rodadura agresiva proporciona gran tracción sin sacrificar velocidad.', 210000.00, NULL, 0, 30000.00, 2, 2, 3, 5, 'products/TwMcPA0x3QvzM43BQibSQpclVwWLW5VIMkglJYUs.webp', 'maxxis-ardent-29x225-exo-tr-2', NULL, '2025-08-04 03:36:03', '2025-08-04 03:36:03'),
 (28, 'Continental Grand Prix 5000 700x25c', 'Llantas premium para bicicletas de ruta, ofrecen un equilibrio ideal entre resistencia al rodamiento, agarre y durabilidad.', 280000.00, NULL, 1, NULL, 2, 2, 3, 5, 'products/fmZfvPhZSKhP9wZ5SwWia8dcPCszIXXSEc2Tz5K3.webp', 'continental-grand-prix-5000-700x25c-2', NULL, '2025-08-04 03:41:22', '2025-08-04 03:41:22'),
 (29, 'Kenda Kwick Drumlin 700x45c', 'Llanta versátil para bicicletas urbanas o de trekking. Diseñada para uso diario en ciudad y caminos de grava ligera.', 130000.00, NULL, 0, 15000.00, 2, 2, 3, 5, 'products/C1oxD2dOjYcUtoqPEalXevsFpzJo2UM7Cz3RYacW.jpg', 'kenda-kwick-drumlin-700x45c-2', NULL, '2025-08-04 03:44:05', '2025-08-04 03:44:05'),
 (30, 'Shimano Deore M6100 1x12 velocidades', 'Transmisión moderna de 12 velocidades diseñada para MTB, enfocada en eficiencia, durabilidad y cambios suaves en todo tipo de terreno.', 690.00, NULL, 0, 20.00, 2, 2, 6, 6, 'products/9S8kzUGrChJ5NoUxgvRvtog4uZCzInF9ssu0Bcck.webp', 'shimano-deore-m6100-1x12-velocidades-2', NULL, '2025-08-04 03:59:54', '2025-08-04 03:59:54'),
 (31, 'SRAM GX Eagle 1x12 velocidades', 'Transmisión de gama media-alta ideal para ciclismo de montaña agresivo, combina resistencia y rendimiento profesional con precio razonable.', 1100000.00, NULL, 1, NULL, 2, 2, 6, 3, 'products/TZtYlWb2grbahI7BMXGTaWrRMJV8xCBcAZan5gp8.webp', 'sram-gx-eagle-1x12-velocidades-2', NULL, '2025-08-04 04:05:24', '2025-08-04 04:05:24'),
-(32, 'Shimano Tourney TX800 3x8 velocidades', 'Transmisión básica para bicicletas urbanas o de trekking, confiable para uso recreativo o desplazamientos diarios.', 320000.00, 310000.00, 0, 15000.00, 2, 2, 6, 2, 'products/IO9esiG1FoB9nhMmQayTtNO23wo6gD8Xn9uoqISM.jpg', 'shimano-tourney-tx800-3x8-velocidades-2', NULL, '2025-08-04 04:13:01', '2025-08-04 04:13:01');
+(32, 'Shimano Tourney TX800 3x8 velocidades', 'Transmisión básica para bicicletas urbanas o de trekking, confiable para uso recreativo o desplazamientos diarios.', 320000.00, 310000.00, 0, 15000.00, 2, 2, 6, 2, 'products/IO9esiG1FoB9nhMmQayTtNO23wo6gD8Xn9uoqISM.jpg', 'shimano-tourney-tx800-3x8-velocidades-2', NULL, '2025-08-04 04:13:01', '2025-08-04 04:13:01'),
+(33, 'Bicicleta MTB TrailMaster 29 Pro', 'Bicicleta de montaña versátil, diseñada para senderos técnicos y uso recreativo avanzado. Su cuadro de aluminio liviano, suspensión delantera y componentes de gama media la hacen ideal para ciclistas que buscan rendimiento sin romper el presupuesto.', 3200000.00, NULL, 1, NULL, 1, 2, 1, 2, 'products/McEwpz9nEDc9Eq1SqDu6aIQe9drPSmwywB2bFqJG.webp', 'bicicleta-mtb-trailmaster-29-pro-2', NULL, '2025-08-04 04:32:17', '2025-08-04 04:32:17'),
+(34, 'Bicicleta MTB TrailMaster 29 Pro', 'Bicicleta de montaña versátil, diseñada para senderos técnicos y uso recreativo avanzado. Su cuadro de aluminio liviano, suspensión delantera y componentes de gama media la hacen ideal para ciclistas que buscan rendimiento sin romper el presupuesto.', 3200000.00, NULL, 1, NULL, 1, 2, 1, 2, 'products/lVuiALa1D8Wn5ihktTecglzka51nJvBNqVnz180f.webp', 'bicicleta-mtb-trailmaster-29-pro-3', NULL, '2025-08-04 04:37:50', '2025-08-04 04:37:50'),
+(35, 'Bicicleta Urbana CityMotion 700', 'Bicicleta diseñada para desplazamientos urbanos cómodos y eficientes. Su diseño elegante con cuadro bajo facilita el montaje y desmontaje, ideal para ciudad y trayectos diarios al trabajo o estudio.', 1850000.00, NULL, 1, NULL, 1, 2, 1, 2, 'products/PMZzIJX05fTA32wRvAtcS0BK1neDIXWjpMh5ffRL.webp', 'bicicleta-urbana-citymotion-700-2', NULL, '2025-08-04 04:48:25', '2025-08-04 04:48:25'),
+(36, 'Bicicleta Urbana CityMotion 700', 'Bicicleta diseñada para desplazamientos urbanos cómodos y eficientes. Su diseño elegante con cuadro bajo facilita el montaje y desmontaje, ideal para ciudad y trayectos diarios al trabajo o estudio.', 1850000.00, NULL, 1, NULL, 1, 2, 1, 2, 'products/KYObOMl8b0xsJx2yBYJCH3qqJ7KdmmuQRyYwZOPO.webp', 'bicicleta-urbana-citymotion-700-3', NULL, '2025-08-04 04:54:04', '2025-08-04 04:54:04'),
+(37, 'Shimano Deore FH-M6100 (trasero)', 'Buje trasero para bicicletas de montaña con sistema Micro Spline, compatible con cassettes de 12 velocidades.', 220000.00, NULL, 0, 18500.00, 2, 2, 10, 10, 'products/b6goSugilZbh5ZxDbfPAP6PQPwEH1xz2dPxJNcx2.webp', 'shimano-deore-fh-m6100-trasero-2', NULL, '2025-08-04 06:16:20', '2025-08-04 06:16:20');
 
 -- --------------------------------------------------------
 
@@ -510,7 +516,17 @@ INSERT INTO `product_attributes` (`id`, `product_id`, `nombre`, `descripcion`, `
 (34, 31, 'Rango dientes', 'Piñón de 10-52 dientes', '2025-08-04 04:05:24', '2025-08-04 04:05:24'),
 (35, 31, 'Sistema de montaje', 'X-Actuation para cambios consistentes.', '2025-08-04 04:05:24', '2025-08-04 04:05:24'),
 (36, 32, 'Marchas', 'Triple plato (3x)', '2025-08-04 04:13:01', '2025-08-04 04:13:01'),
-(37, 32, 'Cambios indexados', 'Sistema SIS', '2025-08-04 04:13:01', '2025-08-04 04:13:01');
+(37, 32, 'Cambios indexados', 'Sistema SIS', '2025-08-04 04:13:01', '2025-08-04 04:13:01'),
+(38, 33, 'Sistema Monoplato', 'Menor mantenimiento', '2025-08-04 04:32:17', '2025-08-04 04:32:17'),
+(39, 33, 'Tecnología Hyperglide+', 'Para cambios más fluidos', '2025-08-04 04:32:17', '2025-08-04 04:32:17'),
+(40, 34, 'Rango dientes', 'Piñón de 10-52 dientes', '2025-08-04 04:37:50', '2025-08-04 04:37:50'),
+(41, 34, 'Sistema de montaje', 'X-Actuation para cambios consistentes.', '2025-08-04 04:37:50', '2025-08-04 04:37:50'),
+(42, 35, 'Triple plato', 'para variedad de marchas', '2025-08-04 04:48:25', '2025-08-04 04:48:25'),
+(43, 35, 'Cambios suaves', 'con sistema SIS indexado', '2025-08-04 04:48:25', '2025-08-04 04:48:25'),
+(44, 36, 'Rango dientes', 'Piñón de 10-52 dientes', '2025-08-04 04:54:04', '2025-08-04 04:54:04'),
+(45, 36, 'Tecnología 2', 'Active Comfort', '2025-08-04 04:54:04', '2025-08-04 04:54:04'),
+(46, 37, 'Sistema de rodamiento', 'sellado para mayor durabilidad', '2025-08-04 06:16:20', '2025-08-04 06:16:20'),
+(47, 37, 'Engranaje rápido de 10°', 'para respuesta inmediata', '2025-08-04 06:16:20', '2025-08-04 06:16:20');
 
 -- --------------------------------------------------------
 
@@ -528,6 +544,46 @@ CREATE TABLE `product_compositions` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `product_compositions`
+--
+
+INSERT INTO `product_compositions` (`id`, `product_id`, `nombre_campo`, `category_id`, `articulo_id`, `precio_adicional`, `created_at`, `updated_at`) VALUES
+(1, 34, 'Llantas', 3, 29, 30000.00, '2025-08-04 04:37:50', '2025-08-04 04:37:50'),
+(2, 34, 'Transmisión', 6, 32, 800000.00, '2025-08-04 04:37:50', '2025-08-04 04:37:50'),
+(3, 35, 'Llantas', NULL, NULL, 0.00, '2025-08-04 04:48:25', '2025-08-04 04:48:25'),
+(4, 35, 'Transmisión', NULL, NULL, 0.00, '2025-08-04 04:48:25', '2025-08-04 04:48:25'),
+(5, 36, 'Llantas', NULL, NULL, 0.00, '2025-08-04 04:54:04', '2025-08-04 04:54:04'),
+(6, 36, 'Transmisión', NULL, NULL, 0.00, '2025-08-04 04:54:04', '2025-08-04 04:54:04');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `product_composition_options`
+--
+
+CREATE TABLE `product_composition_options` (
+  `id` bigint UNSIGNED NOT NULL,
+  `product_composition_id` bigint UNSIGNED NOT NULL,
+  `option_product_id` bigint UNSIGNED NOT NULL,
+  `precio_adicional` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `product_composition_options`
+--
+
+INSERT INTO `product_composition_options` (`id`, `product_composition_id`, `option_product_id`, `precio_adicional`, `created_at`, `updated_at`) VALUES
+(1, 3, 28, 110000.00, '2025-08-04 04:48:25', '2025-08-04 04:48:25'),
+(2, 4, 32, 800000.00, '2025-08-04 04:48:25', '2025-08-04 04:48:25'),
+(3, 5, 27, 110000.00, '2025-08-04 04:54:04', '2025-08-04 04:54:04'),
+(4, 5, 28, 150000.00, '2025-08-04 04:54:04', '2025-08-04 04:54:04'),
+(5, 5, 29, 50000.00, '2025-08-04 04:54:04', '2025-08-04 04:54:04'),
+(6, 6, 30, 300000.00, '2025-08-04 04:54:04', '2025-08-04 04:54:04'),
+(7, 6, 31, 150000.00, '2025-08-04 04:54:04', '2025-08-04 04:54:04');
 
 -- --------------------------------------------------------
 
@@ -568,7 +624,14 @@ INSERT INTO `product_galleries` (`id`, `product_id`, `imagen_url`, `orden`, `cre
 (17, 30, 'products/gallery/qg6EBqi3o6fPrW7oYqervLVpn9yc5s0X2DDarS0x.jpg', 0, '2025-08-04 03:59:54', '2025-08-04 03:59:54'),
 (18, 31, 'products/gallery/uJZ75Hy1twGnWL3DoieL0SxQsIPqd9KmyjjzMEsB.png', 0, '2025-08-04 04:05:24', '2025-08-04 04:05:24'),
 (19, 31, 'products/gallery/o3liTjf8dXp4EJo3MKHxTUnNyEULHZaO30IxpWc2.png', 0, '2025-08-04 04:05:24', '2025-08-04 04:05:24'),
-(20, 32, 'products/gallery/7b09OiKxdHaZ8vyxDsr40xcYZ5WrYM0iRxFtLHLD.jpg', 0, '2025-08-04 04:13:01', '2025-08-04 04:13:01');
+(20, 32, 'products/gallery/7b09OiKxdHaZ8vyxDsr40xcYZ5WrYM0iRxFtLHLD.jpg', 0, '2025-08-04 04:13:01', '2025-08-04 04:13:01'),
+(21, 33, 'products/gallery/2R02yleYcQCKk3KcMtvGxumeu0efIOXoLeUGZX5o.png', 0, '2025-08-04 04:32:17', '2025-08-04 04:32:17'),
+(22, 34, 'products/gallery/MKZL6ApUliTUUVL8XUoKTxkN7BF5GgrVWBLfZgV4.jpg', 0, '2025-08-04 04:37:50', '2025-08-04 04:37:50'),
+(23, 35, 'products/gallery/8E4b26Mu0TJJqrA5a8ZBjmSNZ7ZQ0V9rhdI3fQYc.jpg', 0, '2025-08-04 04:48:25', '2025-08-04 04:48:25'),
+(24, 36, 'products/gallery/urxsKBambBPrGQjEeWYgMW8dfzIfTzU1VKia3t8Z.png', 0, '2025-08-04 04:54:04', '2025-08-04 04:54:04'),
+(25, 37, 'products/gallery/TKWyY90YqwPjDvY5r6qsiwnxxPkMzpbA8stPYMyW.png', 0, '2025-08-04 06:16:20', '2025-08-04 06:16:20'),
+(26, 37, 'products/gallery/35RrJCy6KuxyqWgUD3kWz7bjdTgIbdNWqiMwvb4F.jpg', 0, '2025-08-04 06:16:20', '2025-08-04 06:16:20'),
+(27, 37, 'products/gallery/0T9Oq8KEx1nx2b2DzFa8vENImnq5algnP8S2xc4n.png', 0, '2025-08-04 06:16:20', '2025-08-04 06:16:20');
 
 -- --------------------------------------------------------
 
@@ -611,7 +674,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('AbwzgpskxN34AuMcdpk24a998espk7iRKweKDSAe', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiRko5VVlwc3RMUjlmRklvNlRDNE9OZE9iYm9qNzFRZGlUV21BQjFmWSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM3OiJodHRwOi8vY3VzdG9tc2hvcC50ZXN0L251ZXZvLXByb2R1Y3RvIjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Mjt9', 1754263000),
+('AbwzgpskxN34AuMcdpk24a998espk7iRKweKDSAe', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiRko5VVlwc3RMUjlmRklvNlRDNE9OZE9iYm9qNzFRZGlUV21BQjFmWSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM3OiJodHRwOi8vY3VzdG9tc2hvcC50ZXN0L251ZXZvLXByb2R1Y3RvIjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Mjt9', 1754270464),
 ('oZ7LKKgWw608CqavdQlSHkXjr6dPS0vYvmgWjcbE', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiallFZjBoWU9CemdpcXY1aWhsbDhvUUNzc2FoWWVlVHo5QmdmUGFweCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjg6Imh0dHA6Ly9jdXN0b21zaG9wLnRlc3QvbG9naW4iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1754258819);
 
 -- --------------------------------------------------------
@@ -810,6 +873,14 @@ ALTER TABLE `product_compositions`
   ADD KEY `product_compositions_category_id_foreign` (`category_id`);
 
 --
+-- Indices de la tabla `product_composition_options`
+--
+ALTER TABLE `product_composition_options`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `product_composition_options_product_composition_id_foreign` (`product_composition_id`),
+  ADD KEY `product_composition_options_option_product_id_foreign` (`option_product_id`);
+
+--
 -- Indices de la tabla `product_galleries`
 --
 ALTER TABLE `product_galleries`
@@ -865,7 +936,7 @@ ALTER TABLE `banks`
 -- AUTO_INCREMENT de la tabla `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `ciudades`
@@ -913,25 +984,31 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de la tabla `product_attributes`
 --
 ALTER TABLE `product_attributes`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT de la tabla `product_compositions`
 --
 ALTER TABLE `product_compositions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `product_composition_options`
+--
+ALTER TABLE `product_composition_options`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `product_galleries`
 --
 ALTER TABLE `product_galleries`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -987,6 +1064,13 @@ ALTER TABLE `product_attributes`
 ALTER TABLE `product_compositions`
   ADD CONSTRAINT `product_compositions_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`),
   ADD CONSTRAINT `product_compositions_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
+
+--
+-- Filtros para la tabla `product_composition_options`
+--
+ALTER TABLE `product_composition_options`
+  ADD CONSTRAINT `product_composition_options_option_product_id_foreign` FOREIGN KEY (`option_product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `product_composition_options_product_composition_id_foreign` FOREIGN KEY (`product_composition_id`) REFERENCES `product_compositions` (`id`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `product_galleries`

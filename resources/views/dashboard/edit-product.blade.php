@@ -19,36 +19,37 @@
     <div class="header-body-content pb-2 mb-4">
         <div class="row align-item-center">
             <div class="col-lg-6 mb-3">
-                <h1 class="text-left fw-bold">Nuevo producto</h1>
+                <h1 class="text-left fw-bold">Editar producto</h1>
             </div>
             <div class="col-lg-6 mb-3">
                 <div class="box-button">
                     <div class="row mx-auto w-100 justify-content-end align-items-center">
                         <div class="col-xl-4 col-lg-6 mb-3">
-                            <button type="button" class="btn w-100 btn-link red" id="clearFields">Limpiar campos</button>
+                            <a href="{{ route('products') }}" class="btn w-100 btn-link red">Cancelar</a>
                         </div>
                         <div class="col-xl-4 col-lg-6 mb-3">
-                            <button type="submit" form="productForm" class="btn w-100 btn-primary">Guardar</button>
+                            <button type="submit" form="productForm" class="btn w-100 btn-primary">Guardar cambios</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <form action="{{ route('products.store') }}" method="POST" id="productForm" enctype="multipart/form-data">
+    <form action="{{ route('products.update', $product->id) }}" method="POST" id="productForm" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
         <div class="row">
             <div class="col-lg-9">
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control @error('nombre') is-invalid @enderror" id="nombre" name="nombre" placeholder="Nombre del producto" required>
+                    <input type="text" class="form-control @error('nombre') is-invalid @enderror" id="nombre" name="nombre" placeholder="Nombre del producto" value="{{ old('nombre', $product->nombre) }}" required>
                     @error('nombre')
                     <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="mb-3">
                     <label for="descripcion" class="form-label">Descripción del producto <span class="text-danger">*</span></label>
-                    <textarea class="form-control @error('descripcion') is-invalid @enderror" id="descripcion" name="descripcion" rows="4" placeholder="Escriba una descripción." required></textarea>
+                    <textarea class="form-control @error('descripcion') is-invalid @enderror" id="descripcion" name="descripcion" rows="4" placeholder="Escriba una descripción." required>{{ old('descripcion', $product->descripcion) }}</textarea>
                     @error('descripcion')
                     <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
@@ -72,11 +73,11 @@
                     </li>
                 </ul>
                 <div class="composed-section py-4">
-                    @include('dashboard.compuesto.precio')
-                    @include('dashboard.compuesto.atributos')
-                    @include('dashboard.compuesto.composicion')
-                    @include('dashboard.compuesto.envio')
-                    @include('dashboard.compuesto.galeria')
+                    @include('dashboard.compuesto.precio', ['product' => $product])
+                    @include('dashboard.compuesto.atributos', ['product' => $product])
+                    @include('dashboard.compuesto.composicion', ['product' => $product])
+                    @include('dashboard.compuesto.envio', ['product' => $product])
+                    @include('dashboard.compuesto.galeria', ['product' => $product])
                 </div>
             </div>
             <div class="col-lg-3">
@@ -84,8 +85,8 @@
                     <div class="mb-3">
                         <label for="composition_option_id" class="form-label">Compuesto <span class="text-danger">*</span></label>
                         <select class="form-select @error('composition_option_id') is-invalid @enderror" name="composition_option_id" id="composition_option_id" aria-label="Default select example" required>
-                            @foreach ( $listOptions as $listOption ) {{-- Changed back to $listOptions --}}
-                            <option value="{{$listOption->id}}">{{$listOption->opcion}}</option>
+                            @foreach ( $listOptions as $listOption )
+                            <option value="{{$listOption->id}}" {{ $product->composition_option_id == $listOption->id ? 'selected' : '' }}>{{$listOption->opcion}}</option>
                             @endforeach
                         </select>
                         @error('composition_option_id')
@@ -96,7 +97,7 @@
                         <label for="format_id" class="form-label">Tipo <span class="text-danger">*</span></label>
                         <select class="form-select @error('format_id') is-invalid @enderror" name="format_id" id="format_id" aria-label="Default select example" required>
                             @foreach ( $formats as $format )
-                            <option value="{{$format->id}}">{{$format->formato}}</option>                                
+                            <option value="{{$format->id}}" {{ $product->format_id == $format->id ? 'selected' : '' }}>{{$format->formato}}</option>                                
                             @endforeach
                         </select>
                         @error('format_id')
@@ -106,9 +107,9 @@
                     <div class="mb-3">
                         <label for="category_id" class="form-label">Categoría <span class="text-danger">*</span></label>
                         <select class="form-select @error('category_id') is-invalid @enderror" name="category_id" id="category_id" aria-label="Default select example" required>
-                            <option value="" selected disabled>Seleccione</option>
+                            <option value="" disabled>Seleccione</option>
                             @foreach ($listCategories as $category )
-                            <option value="{{$category->id}}">{{$category->nombre}}</option>
+                            <option value="{{$category->id}}" {{ $product->category_id == $category->id ? 'selected' : '' }}>{{$category->nombre}}</option>
                             @endforeach
                         </select>
                         @error('category_id')
@@ -117,7 +118,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="unidades_disponibles" class="form-label">Unidades disponibles <span class="text-danger">*</span></label>
-                        <input type="number" class="form-control @error('unidades_disponibles') is-invalid @enderror" pattern="[0-9]+" id="unidades_disponibles" name="unidades_disponibles" placeholder="0" required>
+                        <input type="number" class="form-control @error('unidades_disponibles') is-invalid @enderror" pattern="[0-9]+" id="unidades_disponibles" name="unidades_disponibles" placeholder="0" value="{{ old('unidades_disponibles', $product->unidades_disponibles) }}" required>
                         @error('unidades_disponibles')
                         <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
@@ -126,13 +127,13 @@
                         <div class="upload-file">
                             <div class="front-page">
                                 <label for="imagen_portada" class="form-label">Suba su imagen de portada <span class="text-danger">*</span></label>
-                                <input class="form-control @error('imagen_portada') is-invalid @enderror" type="file" id="imagen_portada" name="imagen_portada" accept="image/*" required>
+                                <input class="form-control @error('imagen_portada') is-invalid @enderror" type="file" id="imagen_portada" name="imagen_portada" accept="image/*">
                                 @error('imagen_portada')
                                 <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
-                                <div class="thumbnail-product d-none">
+                                <div class="thumbnail-product {{ $product->imagen_portada ? '' : 'd-none' }}">
                                     <button type="button" id="deleteImageButton">Eliminar</button>
-                                    <img id="thumbnailPreview" alt="Vista previa" />
+                                    <img id="thumbnailPreview" src="{{ $product->imagen_portada ? asset('storage/' . $product->imagen_portada) : '' }}" alt="Vista previa" />
                                 </div>
                             </div>
                         </div>
@@ -141,7 +142,7 @@
                         <label for="url" class="form-label d-flex justify-content-between">URL</label>
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon3">{{ config('app.url') }}/</span>
-                            <input type="text" class="form-control @error('url') is-invalid @enderror" id="url" name="url" placeholder="" readonly>
+                            <input type="text" class="form-control @error('url') is-invalid @enderror" id="url" name="url" value="{{ old('url', $product->url) }}" readonly>
                         </div>
                         @error('url')
                         <span class="invalid-feedback">{{ $message }}</span>
@@ -153,26 +154,6 @@
     </form>
 </div>
 
-
-
-<!--Llamado de componentes modales para los respectivos mensajes-->
-@if (session('success'))
-    <x-modal id="successModal" title="¡Éxito!">
-        <p>{{ session('success') }}</p>
-        <x-slot name="footer">
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
-        </x-slot>
-    </x-modal>
-@endif
-
-<x-modal id="clearFieldModal" title="¡Advertencia!">
-    <p>Cambios cancelados. <br> El formulario se ha restablecido.</p>
-    @slot('footer')
-    <button type="button" class="btn btn-primary px-5" data-bs-dismiss="modal" aria-label="Close">Aceptar</button>
-    @endslot
-</x-modal>
-
-
 <script src="{{ asset('assets/js/tabs-product.js') }}" defer></script>
 <script src="{{ asset('assets/js/thumbnail-product.js') }}" defer></script>
 <script src="{{ asset('assets/js/composition-tab-control.js') }}" defer></script>
@@ -180,111 +161,35 @@
 <script src="{{ asset('assets/js/shipping-options.js') }}" defer></script>
 <script src="{{ asset('assets/js/compositions.js') }}" defer></script>
 
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    setTimeout(function() {
-        let successAlert = document.querySelector('.alert-success');
-        if (successAlert) {
-            successAlert.style.display = 'none';
-        }
-
-        let errorAlert = document.querySelector('.alert-danger');
-        if (errorAlert) {
-            errorAlert.style.display = 'none';
-        }
-    }, 3000);
-});
-</script>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const nombreInput = document.getElementById('nombre');
-    const urlInput = document.getElementById('url');
-    const urlPrefix = '{{ config('app.url') }}/';
-    //Generador de URL automático para el producto
-    nombreInput.addEventListener('keyup', function () {
-        let slug = this.value.toLowerCase()
-            .replace(/\s+/g, '-')
-            .replace(/[ñ]/g, 'n')
-            .replace(/[^\w\-]+/g, '')
-            .replace(/\-\-+/g, '-')
-            .replace(/^-+/, '') 
-            .replace(/-+$/, '');
-        
-        urlInput.value = slug;
-    });
-});
-</script>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const categorySelect = document.getElementById('composition_category_id');
-    const articleSelect = document.getElementById('composition_articulo_id');
-
-    if (categorySelect) {
-        categorySelect.addEventListener('change', function () {
-            const categoryId = this.value;
-            articleSelect.innerHTML = '<option value="">Cargando...</option>';
-
-            if (categoryId) {
-                fetch(`/products/by-category/${categoryId}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        articleSelect.innerHTML = '<option value="">Seleccione...</option>';
-                        data.forEach(product => {
-                            const option = document.createElement('option');
-                            option.value = product.id;
-                            option.textContent = product.nombre;
-                            articleSelect.appendChild(option);
-                        });
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        articleSelect.innerHTML = '<option value="">Error al cargar</option>';
-                    });
-            } else {
-                articleSelect.innerHTML = '<option value="">Seleccione una categoría primero...</option>';
-            }
-        });
-    }
-});
-</script>
-
 @endsection
 
 @push('scripts')
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const fileInput = document.getElementById('fileInput');
-    const previewContainer = document.getElementById('preview');
-
-    if (fileInput) {
-        fileInput.addEventListener('change', function (event) {
-            previewContainer.innerHTML = ''; // Limpiar previsualizaciones anteriores
-            const files = event.target.files;
-
-            for (const file of files) {
-                if (file.type.startsWith('image/')) {
-                    const reader = new FileReader();
-
-                    reader.onload = function (e) {
-                        const imgWrapper = document.createElement('div');
-                        imgWrapper.classList.add('position-relative', 'me-2', 'mb-2');
-
-                        const img = document.createElement('img');
-                        img.src = e.target.result;
-                        img.classList.add('img-thumbnail');
-                        img.style.width = '100px';
-
-                        imgWrapper.appendChild(img);
-                        previewContainer.appendChild(imgWrapper);
-                    };
-
-                    reader.readAsDataURL(file);
-                }
-            }
-        });
+function deleteImage(imageId) {
+    if (!confirm('¿Estás seguro de que quieres eliminar esta imagen?')) {
+        return;
     }
-});
+
+    fetch(`/gallery/${imageId}`, {
+        method: 'DELETE',
+        headers: {
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            document.getElementById(`image-${imageId}`).remove();
+            alert(data.success);
+        } else {
+            alert(data.error || 'No se pudo eliminar la imagen.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Ocurrió un error al intentar eliminar la imagen.');
+    });
+}
 </script>
 @endpush
