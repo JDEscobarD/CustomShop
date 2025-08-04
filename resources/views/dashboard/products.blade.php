@@ -77,6 +77,7 @@
                         <th scope="col">Precio</th>
                         <th scope="col">Categoría</th>
                         <th scope="col">Fecha</th>
+                        <th scope="col">Ver en tienda</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
@@ -94,6 +95,9 @@
                         <td class="price-item">{{ '$ ' . number_format($product->precio_regular, 0, ',', '.') }}</td>
                         <td>{{ $product->category->nombre ?? 'Sin Categoría' }}</td>
                         <td>{{ $product->created_at ? $product->created_at->format('d/m/Y') : 'N/A' }}</td>
+                        <td>
+                            <a href="{{ route('shop.product.show', $product) }}" class="btn btn-info me-2" target="_blank">Ver</a>
+                        </td>
                         <td>
                             <a href="{{ url('dashboard/products/' . $product->id . '/edit') }}" class="btn btn-primary me-2">Editar</a>
                             <form action="{{ url('dashboard/products/' . $product->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('¿Estás seguro de que quieres eliminar este producto?');">

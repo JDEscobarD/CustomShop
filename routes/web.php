@@ -7,7 +7,10 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ProductsController;
 
 //Rutas públicas
-Route::middleware('guest')->group(function () {    
+Route::get('/store', [ProductsController::class, 'shopIndex'])->name('store.index');
+Route::get('/producto/{product}', [ProductsController::class, 'show'])->name('shop.product.show');
+
+Route::middleware('guest')->group(function () {
 });
 
 //Rutas autenticadas

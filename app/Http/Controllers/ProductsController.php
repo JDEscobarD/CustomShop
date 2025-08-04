@@ -13,6 +13,12 @@ use Illuminate\Support\Str;
 
 class ProductsController extends Controller
 {
+    public function shopIndex()
+    {
+        $products = Product::all();
+        return view('shop.index', compact('products'));
+    }
+
     public function index()
     {
         $products = Product::with('category')->paginate(10);
@@ -190,6 +196,12 @@ class ProductsController extends Controller
                 ]);
             }
         }
+    }
+
+    public function show(Product $product)
+    {
+        $product->load('compositions.options.optionProduct', 'attributes', 'gallery');
+        return view('shop.products', compact('product'));
     }
 
     public function getProductsByCategory(Category $category)
